@@ -8,6 +8,8 @@ onready var body: KinematicBody = get_node(body_node)
 export(float) var move_speed = 1.0
 export(float) var jump_power = 30.0
 
+export(float) var lerp_speed = 30.0
+
 var local = true
 
 ## Set by this script
@@ -17,11 +19,15 @@ var on_ground = false
 var jump = false
 var move_vec = Vector3.ZERO
 
+var last_pos
+
 const gravity = ProjectSettings["physics/3d/default_gravity"] * Vector3.DOWN
 const dampening = ProjectSettings["physics/3d/default_linear_damp"]
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not local:
+		if last_pos:
+			body.transform.origin = lerp(body.transform.origin, last_pos, delta * lerp_speed)
 		return
 	if jump:
 		if on_ground:
@@ -44,4 +50,7 @@ remote func sync_movement(velocity, on_ground, jump, transform):
 	self.velocity = velocity
 	self.on_ground = on_ground
 	self.jump = jump
-	body.transform = transform
+	body.transform.basis = transform.basis
+	if not last_pos:
+		body.transform.origin = transform.origin
+	last_pos = transform.origin

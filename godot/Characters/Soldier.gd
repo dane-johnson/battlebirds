@@ -4,6 +4,7 @@ onready var movement_controller = $MovementController
 onready var anim_tree = $AnimationTree
 
 var aiming
+var look_direction
 var was_falling
 var camera_rig
 onready var player = get_parent()
@@ -33,7 +34,7 @@ func _process(_delta):
 
 	if player.local:
 		## Update script variables
-		rpc("sync_variables", aiming, was_falling)
+		rpc_unreliable("sync_variables", aiming, was_falling)
 
 func _input(event):
 	if not player.local: return
