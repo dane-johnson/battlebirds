@@ -10,4 +10,9 @@ func host_game():
 	hide()
 
 func join_game():
-	pass
+	var ip_addr = $IPEntry.text
+	if ip_addr == "":
+		ip_addr = "localhost"
+	NetworkManager.join_game(ip_addr)
+	LevelSelector.load("Demo")
+	hide()

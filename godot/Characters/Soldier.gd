@@ -6,16 +6,18 @@ onready var anim_tree = $AnimationTree
 var aiming
 var was_falling
 var camera_rig
+onready var player = get_parent()
 
 func _process(_delta):
-	## Rotation
-	if aiming:
-		transform.basis = camera_rig.transform.basis
-	else:
-		## TODO change this, I hate this
-		var vel = movement_controller.velocity
-		vel.y = 0
-		look_at(transform.origin + vel, Vector3.UP)
+	if player.local:
+		## Rotation
+		if aiming:
+			transform.basis = camera_rig.transform.basis
+		else:
+			## TODO change this, I hate this
+			var vel = movement_controller.velocity
+			vel.y = 0
+			look_at(transform.origin + vel, Vector3.UP)
 
 	## Animation updates
 	var rel_velocity = transform.basis.xform_inv(movement_controller.velocity)
@@ -29,7 +31,12 @@ func _process(_delta):
 		anim_tree["parameters/Landing/active"] = true
 	was_falling = not movement_controller.on_ground
 
+	if player.local:
+		## Update script variables
+		rpc("sync_variables", aiming, was_falling)
+
 func _input(event):
+	if not player.local: return
 	if event is InputEventMouseButton:
 		if event.button_index == 2:
 			aiming = event.pressed
@@ -38,3 +45,7 @@ func _input(event):
 			movement_controller.jump = true
 			if movement_controller.on_ground:
 				anim_tree["parameters/Jumping/active"] = true
+
+remote func sync_variables(aiming, was_falling):
+	self.aiming = aiming
+	self.was_falling = was_falling

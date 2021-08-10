@@ -33,3 +33,15 @@ func _physics_process(_delta):
 		velocity *= 0.9 ## Friction
 	
 	on_ground = body.is_on_floor()
+
+func _process(_delta):
+	if not local:
+		return
+	## Sync member variables
+	rpc_unreliable("sync_movement", velocity, on_ground, jump, body.transform)
+
+remote func sync_movement(velocity, on_ground, jump, transform):
+	self.velocity = velocity
+	self.on_ground = on_ground
+	self.jump = jump
+	body.transform = transform
