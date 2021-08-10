@@ -4,17 +4,11 @@ onready var camera_rig = $CameraRig
 onready var soldier = $Soldier
 
 func _ready():
-	$Soldier/CameraRemote.remote_path = camera_rig.get_path()
+	soldier.get_node("CameraRemote").remote_path = camera_rig.get_path()
+	soldier.camera_rig = camera_rig
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-func _process(delta):
-	if soldier.aiming:
-		soldier.transform.basis = camera_rig.transform.basis
-	else:
-		var vel = soldier.movement_controller.velocity
-		vel.y = 0
-		soldier.look_at(soldier.transform.origin + vel, Vector3.UP)
-	
+func _process(_delta):
 	## Polling Inputs
 	var move_vec = Vector3.ZERO
 	move_vec.x = Input.get_action_strength("right") - Input.get_action_strength("left")

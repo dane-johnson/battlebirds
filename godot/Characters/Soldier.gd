@@ -5,8 +5,18 @@ onready var anim_tree = $AnimationTree
 
 var aiming
 var was_falling
+var camera_rig
 
 func _process(_delta):
+	## Rotation
+	if aiming:
+		transform.basis = camera_rig.transform.basis
+	else:
+		## TODO change this, I hate this
+		var vel = movement_controller.velocity
+		vel.y = 0
+		look_at(transform.origin + vel, Vector3.UP)
+
 	## Animation updates
 	var rel_velocity = transform.basis.xform_inv(movement_controller.velocity)
 	anim_tree["parameters/Movement/blend_position"].y = -rel_velocity.z
