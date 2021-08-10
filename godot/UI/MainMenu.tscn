@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HostButton" type="Button" parent="."]
+anchor_left = 0.43925
+anchor_top = 0.262484
+anchor_right = 0.509562
+anchor_bottom = 0.262484
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Host Game"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="IPEntry" type="LineEdit" parent="."]
+anchor_left = 0.407657
+anchor_top = 0.348237
+anchor_right = 0.501407
+anchor_bottom = 0.348237
+margin_right = 58.0
+margin_bottom = 24.0
+placeholder_text = "IP Address"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="JoinButton" type="Button" parent="."]
+anchor_left = 0.443209
+anchor_top = 0.440497
+anchor_right = 0.506685
+anchor_bottom = 0.440497
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Join Game"
+__meta__ = {
+"_edit_use_anchors_": true
+}

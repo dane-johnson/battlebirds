@@ -18,7 +18,7 @@ var move_vec = Vector3.ZERO
 const gravity = ProjectSettings["physics/3d/default_gravity"] * Vector3.DOWN
 const dampening = ProjectSettings["physics/3d/default_linear_damp"]
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if jump:
 		if on_ground:
 			move_vec.y = jump_power

@@ -3,6 +3,9 @@ extends Spatial
 onready var camera_rig = $CameraRig
 onready var soldier = $Soldier
 
+var id
+var local = true
+
 func _ready():
 	soldier.get_node("CameraRemote").remote_path = camera_rig.get_path()
 	soldier.camera_rig = camera_rig

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Soldier.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Soldier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Camera/CameraRig.gd" type="Script" id=4]
+
+[node name="Player" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="CameraRig" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81383, 0 )
+script = ExtResource( 4 )
+
+[node name="Camera" type="Camera" parent="CameraRig"]
+transform = Transform( 1, 0, 0, 0, 0.989175, 0.146739, 0, -0.146739, 0.989175, 0, 1.14837, 2.507 )
+
+[node name="Soldier" type="KinematicBody" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4271, 0 )
+script = ExtResource( 2 )

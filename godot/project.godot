@@ -21,8 +21,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Battle Birds"
-run/main_scene="res://Demo/Demo.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://UI/MainMenu.tscn"
+
+[autoload]
+
+NetworkManager="*res://Scripts/NetworkManager.gd"
+PlayerManager="*res://Scripts/PlayerManager.gd"
+LevelSelector="*res://Scripts/LevelSelector.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [input]
 
