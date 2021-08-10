@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Soldier.gd" type="Script" id=2]
 [ext_resource path="res://Characters/Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Camera/CameraRig.gd" type="Script" id=4]

@@ -8,6 +8,8 @@ onready var body: KinematicBody = get_node(body_node)
 export(float) var move_speed = 1.0
 export(float) var jump_power = 30.0
 
+var local = true
+
 ## Set by this script
 var velocity = Vector3.ZERO
 var on_ground = false
@@ -19,6 +21,8 @@ const gravity = ProjectSettings["physics/3d/default_gravity"] * Vector3.DOWN
 const dampening = ProjectSettings["physics/3d/default_linear_damp"]
 
 func _physics_process(_delta):
+	if not local:
+		return
 	if jump:
 		if on_ground:
 			move_vec.y = jump_power
