@@ -7,7 +7,7 @@ func _ready():
 func host_game():
 	NetworkManager.host_game()
 	LevelSelector.load("Demo")
-	hide()
+	hide_menu()
 
 func join_game():
 	var ip_addr = $IPEntry.text
@@ -15,4 +15,8 @@ func join_game():
 		ip_addr = "localhost"
 	NetworkManager.join_game(ip_addr)
 	LevelSelector.load("Demo")
+	hide_menu()
+
+func hide_menu():
+	$AudioStreamPlayer.stop()
 	hide()

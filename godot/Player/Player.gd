@@ -39,5 +39,5 @@ func _process(_delta):
 func _input(event):
 	if not local: return
 	if event is InputEventMouseMotion:
-		var euler = Vector3(0, -event.relative.x * camera_rig.horiz_sensitivity, 0)
-		camera_rig.tgt *= Quat(euler)
+		var euler = Vector3(-event.relative.y * camera_rig.vert_sensitivity, -event.relative.x * camera_rig.horiz_sensitivity, 0.0)
+		camera_rig.add_to_tgt(euler)

@@ -9,6 +9,7 @@ var was_falling
 onready var player = get_parent()
 
 func _process(_delta):
+	
 	transform.basis = look_direction
 
 	## Animation updates
