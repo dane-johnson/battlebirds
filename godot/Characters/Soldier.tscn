@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scripts/MovementController.gd" type="Script" id=1]
 [ext_resource path="res://Characters/raw/Material_001.material" type="Material" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Characters/Soldier.gd" type="Script" id=4]
 [ext_resource path="res://Characters/raw/strafe_left_loop.anim" type="Animation" id=5]
 [ext_resource path="res://Characters/raw/strafe_right_loop.anim" type="Animation" id=6]
+[ext_resource path="res://Weapons/WeaponManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/raw/aim_gun.anim" type="Animation" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Body"
@@ -84,115 +86,6 @@ bind/14/bone = -1
 bind/14/pose = Transform( -2.6475, -0.325647, 0.207775, 0.255687, -0.398592, 2.63329, -0.289552, 2.62555, 0.425535, -0.410752, 0.1894, -0.21224 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "aim_gun"
-length = 0.0416667
-tracks/0/type = "transform"
-tracks/0/path = NodePath("Skeleton2/Skeleton:head")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, -3.30962e-15, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 0, 0, -3.30962e-15, 1, 1, 1, 1 )
-tracks/1/type = "transform"
-tracks/1/path = NodePath("Skeleton2/Skeleton:hand.l")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/keys = PoolRealArray( 0, 1, 5.4948e-08, 1.19209e-07, 0, -1.08292e-05, -0.00491783, -0.0589384, 0.99825, 1, 1, 1, 0.0416667, 1, 5.4948e-08, 1.19209e-07, 0, -1.08292e-05, -0.00491783, -0.0589384, 0.99825, 1, 1, 1 )
-tracks/2/type = "transform"
-tracks/2/path = NodePath("Skeleton2/Skeleton:lowerarm.l")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = true
-tracks/2/enabled = true
-tracks/2/keys = PoolRealArray( 0, 1, -5.96046e-08, -1.19209e-07, 2.98023e-08, 0.00179108, 0.150306, 0.516292, 0.843118, 1, 1, 1, 0.0416667, 1, -5.96046e-08, -1.19209e-07, 2.98023e-08, 0.00179108, 0.150306, 0.516292, 0.843118, 1, 1, 1 )
-tracks/3/type = "transform"
-tracks/3/path = NodePath("Skeleton2/Skeleton:upperarm.l")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = true
-tracks/3/enabled = true
-tracks/3/keys = PoolRealArray( 0, 1, 0, 0, -5.96046e-08, 0.711474, 0.186753, -0.175772, 0.654241, 1, 1, 1, 0.0416667, 1, 0, 0, -5.96046e-08, 0.711474, 0.186753, -0.175772, 0.654241, 1, 1, 1 )
-tracks/4/type = "transform"
-tracks/4/path = NodePath("Skeleton2/Skeleton:hand.r")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = true
-tracks/4/enabled = true
-tracks/4/keys = PoolRealArray( 0, 1, 1.20141e-07, 5.96046e-08, -5.96046e-08, 0.322, 0.00104399, -2.80671e-05, 0.946739, 1, 1, 1, 0.0416667, 1, 1.20141e-07, 5.96046e-08, -5.96046e-08, 0.322, 0.00104399, -2.80671e-05, 0.946739, 1, 1, 1 )
-tracks/5/type = "transform"
-tracks/5/path = NodePath("Skeleton2/Skeleton:lowerarm.r")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = true
-tracks/5/enabled = true
-tracks/5/keys = PoolRealArray( 0, 1, 0, -2.38419e-07, 2.98023e-08, 0.334386, 0.0109939, -0.00204059, 0.94237, 1, 1, 1, 0.0416667, 1, 0, -2.38419e-07, 2.98023e-08, 0.334386, 0.0109939, -0.00204059, 0.94237, 1, 1, 1 )
-tracks/6/type = "transform"
-tracks/6/path = NodePath("Skeleton2/Skeleton:upperarm.r")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = true
-tracks/6/enabled = true
-tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0.755333, 0.0132005, 0.00162951, 0.655206, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 0.755333, 0.0132005, 0.00162951, 0.655206, 1, 1, 1 )
-tracks/7/type = "transform"
-tracks/7/path = NodePath("Skeleton2/Skeleton:torso")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = true
-tracks/7/enabled = true
-tracks/7/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 1.2537e-24, 0, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 0, 1.2537e-24, 0, 1, 1, 1, 1 )
-tracks/8/type = "transform"
-tracks/8/path = NodePath("Skeleton2/Skeleton:foot.l")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = true
-tracks/8/enabled = true
-tracks/8/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.86264e-09, 1.28057e-09, -3.72529e-09, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, -1.86264e-09, 1.28057e-09, -3.72529e-09, 1, 1, 1, 1 )
-tracks/9/type = "transform"
-tracks/9/path = NodePath("Skeleton2/Skeleton:lowerleg.l")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = true
-tracks/9/enabled = true
-tracks/9/keys = PoolRealArray( 0, 1, 0, 0, 0, -3.72529e-09, -5.96629e-10, 2.33376e-09, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, -3.72529e-09, -5.96629e-10, 2.33376e-09, 1, 1, 1, 1 )
-tracks/10/type = "transform"
-tracks/10/path = NodePath("Skeleton2/Skeleton:upperleg.l")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = true
-tracks/10/enabled = true
-tracks/10/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.79397e-08, 2.32831e-09, -6.50521e-17, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 2.79397e-08, 2.32831e-09, -6.50521e-17, 1, 1, 1, 1 )
-tracks/11/type = "transform"
-tracks/11/path = NodePath("Skeleton2/Skeleton:foot.r")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = true
-tracks/11/enabled = true
-tracks/11/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.86264e-09, -1.28057e-09, 3.72529e-09, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, -1.86264e-09, -1.28057e-09, 3.72529e-09, 1, 1, 1, 1 )
-tracks/12/type = "transform"
-tracks/12/path = NodePath("Skeleton2/Skeleton:lowerleg.r")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = true
-tracks/12/enabled = true
-tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, -3.72529e-09, 5.96629e-10, -2.33376e-09, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, -3.72529e-09, 5.96629e-10, -2.33376e-09, 1, 1, 1, 1 )
-tracks/13/type = "transform"
-tracks/13/path = NodePath("Skeleton2/Skeleton:upperleg.r")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = true
-tracks/13/enabled = true
-tracks/13/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.79397e-08, -2.32831e-09, 6.50521e-17, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 2.79397e-08, -2.32831e-09, 6.50521e-17, 1, 1, 1, 1 )
-tracks/14/type = "transform"
-tracks/14/path = NodePath("Skeleton2/Skeleton:root")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = true
-tracks/14/enabled = true
-tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
-
-[sub_resource type="Animation" id=4]
 resource_name = "fall_loop"
 length = 0.833333
 loop = true
@@ -302,7 +195,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0666667, 1, 0, -0.00595641, 0.00597155, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.133333, 1, 0, -0.0442364, 0.0443488, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.333333, 1, -2.64698e-23, -0.25295, 0.253592, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.4, 1, 2.77795e-18, -0.285511, 0.286237, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.466667, 1, 4.62999e-18, -0.276977, 0.277681, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.533333, 1, 4.62999e-18, -0.233439, 0.234032, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.733333, 1, 4.63001e-18, -0.043075, 0.0431843, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.8, 1, 3.704e-18, -0.00648451, 0.00650084, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.833333, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "idle_loop"
 length = 0.833333
 loop = true
@@ -412,7 +305,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.833333, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "jump"
 length = 0.458333
 tracks/0/type = "transform"
@@ -521,7 +414,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, -1.49616e-16, 0.0119002, -0.670358, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0666667, 1, -1.49616e-16, 0.0125303, -0.656159, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.133333, 1, -1.49616e-16, 0.0166408, -0.563529, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.333333, 1, -1.49616e-16, 0.0413036, -0.00774682, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.4, 1, -1.49616e-16, 0.0472142, 0.125452, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.458333, 1, 5.01223e-17, 0.0494045, 0.17481, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "land"
 length = 0.75
 tracks/0/type = "transform"
@@ -630,7 +523,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 8.38186e-17, 0.142384, 0.236625, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0666667, 1, 8.38186e-17, 0.140327, 0.222704, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.133333, 1, 8.38186e-17, 0.126876, 0.133238, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.333333, 1, 8.38186e-17, 0.0450364, -0.354556, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.4, 1, -2.37896e-17, 0.0244799, -0.430658, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.466667, 1, -9.55283e-17, 0.0126481, -0.411068, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.533333, 1, -9.55283e-17, 0.00570273, -0.314831, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.666667, 1, -9.55283e-17, 0.000318408, -0.0687404, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.733333, 1, -3.82113e-17, 1.5974e-05, -0.00756145, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.75, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "melee"
 length = 0.416667
 tracks/0/type = "transform"
@@ -739,7 +632,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.416667, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "run_backwards_loop"
 length = 0.875
 loop = true
@@ -849,7 +742,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0666667, 1, 0, 0.00834382, 0.000386715, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.133333, 1, 0, 0.0549846, 0.00254834, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.2, 1, 0, 0.113178, 0.00524551, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.266667, 1, -5.13358e-08, 0.128155, 0.0059396, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.333333, 1, -5.13358e-08, 0.0866488, 0.00401592, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.4, 1, -5.13358e-08, 0.0271713, 0.00125933, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.466667, 1, 0, 0.00278127, 0.000128865, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.533333, 1, 2.64698e-23, 0.0404361, 0.00187409, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.6, 1, -2.64698e-23, 0.0999137, 0.00463068, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.666667, 1, 5.13358e-08, 0.133718, 0.00619739, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.733333, 1, 5.13358e-08, 0.0999137, 0.00463068, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.8, 1, 5.13358e-08, 0.0404361, 0.00187409, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.875, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "run_forwards_loop"
 length = 1.08333
 loop = true
@@ -959,7 +852,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 3.39967e-18, 0.030638, -0.661055, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0666667, 1, 3.39967e-18, 0.0284883, -0.614673, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.133333, 1, 3.3997e-18, 0.0157694, -0.340242, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.2, 1, 3.39967e-18, -0.00286162, 0.0617417, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.266667, 1, 1.25284e-18, -0.0155807, 0.336173, -5.7742e-08, -8.27181e-25, 6.61744e-24, 1, 1, 1, 1, 0.333333, 1, -1.96739e-18, -0.0141474, 0.305251, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.466667, 1, -1.96739e-18, 0.0198896, -0.429142, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.533333, 1, -3.11322e-18, 0.0299214, -0.645594, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.6, 1, -3.39965e-18, 0.0251949, -0.543611, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.733333, 1, -3.39967e-18, -0.00436211, 0.0941173, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.8, 1, -2.32627e-18, -0.015587, 0.336308, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.866667, 1, 1.96742e-18, -0.014864, 0.320712, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.933333, 1, 1.96739e-18, -0.000532746, 0.0114937, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 1, 1, 1.96745e-18, 0.0180982, -0.39049, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 1.06667, 1, 2.82676e-18, 0.0292048, -0.630134, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 1.08333, 1, 3.39967e-18, 0.030638, -0.661055, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "throw"
 length = 0.458333
 tracks/0/type = "transform"
@@ -1068,7 +961,7 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.458333, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "tpose"
 length = 0.0416667
 tracks/0/type = "transform"
@@ -1177,97 +1070,97 @@ tracks/14/imported = true
 tracks/14/enabled = true
 tracks/14/keys = PoolRealArray( 0, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 1.86265e-09, -7.03104e-24, -6.61744e-24, 1, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeBlend2" id=13]
+[sub_resource type="AnimationNodeBlend2" id=12]
 filter_enabled = true
 filters = [ "Skeleton2/Skeleton:hand.l", "Skeleton2/Skeleton:hand.r", "Skeleton2/Skeleton:head", "Skeleton2/Skeleton:lowerarm.l", "Skeleton2/Skeleton:lowerarm.r", "Skeleton2/Skeleton:upperarm.l", "Skeleton2/Skeleton:upperarm.r" ]
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "fall_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "land"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "melee"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "throw"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "aim_gun"
 
-[sub_resource type="AnimationNodeBlend2" id=20]
+[sub_resource type="AnimationNodeBlend2" id=19]
+
+[sub_resource type="AnimationNodeOneShot" id=20]
 
 [sub_resource type="AnimationNodeOneShot" id=21]
 
 [sub_resource type="AnimationNodeOneShot" id=22]
 
-[sub_resource type="AnimationNodeOneShot" id=23]
-
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "strafe_left_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "strafe_right_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "run_forwards_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "run_backwards_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "idle_loop"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=29]
-blend_point_0/node = SubResource( 24 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=28]
+blend_point_0/node = SubResource( 23 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 25 )
+blend_point_1/node = SubResource( 24 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 26 )
+blend_point_2/node = SubResource( 25 )
 blend_point_2/pos = Vector2( 0, 1 )
-blend_point_3/node = SubResource( 27 )
+blend_point_3/node = SubResource( 26 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 28 )
+blend_point_4/node = SubResource( 27 )
 blend_point_4/pos = Vector2( 0, 0 )
 
-[sub_resource type="AnimationNodeOneShot" id=30]
+[sub_resource type="AnimationNodeOneShot" id=29]
 
-[sub_resource type="AnimationNodeBlendTree" id=31]
-graph_offset = Vector2( -231, -121.5 )
-nodes/Aiming/node = SubResource( 13 )
+[sub_resource type="AnimationNodeBlendTree" id=30]
+graph_offset = Vector2( 368, -50.75 )
+nodes/Aiming/node = SubResource( 12 )
 nodes/Aiming/position = Vector2( 1040, 0 )
-nodes/Animation/node = SubResource( 19 )
-nodes/Animation/position = Vector2( 840, 200 )
-"nodes/Animation 2/node" = SubResource( 14 )
+nodes/Animation/node = SubResource( 18 )
+nodes/Animation/position = Vector2( 880, 220 )
+"nodes/Animation 2/node" = SubResource( 13 )
 "nodes/Animation 2/position" = Vector2( 100, 240 )
-"nodes/Animation 3/node" = SubResource( 15 )
+"nodes/Animation 3/node" = SubResource( 14 )
 "nodes/Animation 3/position" = Vector2( 360, 240 )
-"nodes/Animation 4/node" = SubResource( 16 )
+"nodes/Animation 4/node" = SubResource( 15 )
 "nodes/Animation 4/position" = Vector2( 580, 260 )
-"nodes/Animation 5/node" = SubResource( 17 )
+"nodes/Animation 5/node" = SubResource( 16 )
 "nodes/Animation 5/position" = Vector2( 1171.5, 215.5 )
-"nodes/Animation 6/node" = SubResource( 18 )
+"nodes/Animation 6/node" = SubResource( 17 )
 "nodes/Animation 6/position" = Vector2( 1440, 240 )
-nodes/Falling/node = SubResource( 20 )
+nodes/Falling/node = SubResource( 19 )
 nodes/Falling/position = Vector2( 300, -40 )
-nodes/Jumping/node = SubResource( 21 )
+nodes/Jumping/node = SubResource( 20 )
 nodes/Jumping/position = Vector2( 540, -40 )
-nodes/Landing/node = SubResource( 22 )
+nodes/Landing/node = SubResource( 21 )
 nodes/Landing/position = Vector2( 760, -40 )
-nodes/Melee/node = SubResource( 23 )
+nodes/Melee/node = SubResource( 22 )
 nodes/Melee/position = Vector2( 1340, -40 )
-nodes/Movement/node = SubResource( 29 )
+nodes/Movement/node = SubResource( 28 )
 nodes/Movement/position = Vector2( 0, -40 )
-nodes/Throw/node = SubResource( 30 )
+nodes/Throw/node = SubResource( 29 )
 nodes/Throw/position = Vector2( 1620, -40 )
 nodes/output/position = Vector2( 1880, -60 )
 node_connections = [ "output", 0, "Throw", "Aiming", 0, "Landing", "Aiming", 1, "Animation", "Falling", 0, "Movement", "Falling", 1, "Animation 2", "Jumping", 0, "Falling", "Jumping", 1, "Animation 3", "Landing", 0, "Jumping", "Landing", 1, "Animation 4", "Melee", 0, "Aiming", "Melee", 1, "Animation 5", "Throw", 0, "Melee", "Throw", 1, "Animation 6" ]
 
-[sub_resource type="CapsuleShape" id=32]
+[sub_resource type="CapsuleShape" id=31]
 radius = 0.5
 height = 0.92
 
@@ -1364,22 +1257,29 @@ skin = SubResource( 2 )
 material/0 = ExtResource( 3 )
 material/1 = ExtResource( 2 )
 
+[node name="RightHand" type="BoneAttachment" parent="Skeleton2/Skeleton"]
+transform = Transform( -0.916362, 0.400352, 0.000249527, -0.400319, -0.916279, -0.013407, -0.00513845, -0.0123853, 0.999911, -0.925853, -0.161893, 0.0222512 )
+bone_name = "hand.r"
+
+[node name="WeaponManager" parent="Skeleton2/Skeleton/RightHand" instance=ExtResource( 7 )]
+transform = Transform( -0.0374544, 1.36315, -0.0100034, 0.277072, 0.0174141, 1.33513, 1.33473, 0.0346365, -0.277436, -0.0817595, 0.535383, -0.116818 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/aim_gun = SubResource( 3 )
-anims/fall_loop = SubResource( 4 )
-anims/idle_loop = SubResource( 5 )
-anims/jump = SubResource( 6 )
-anims/land = SubResource( 7 )
-anims/melee = SubResource( 8 )
-anims/run_backwards_loop = SubResource( 9 )
-anims/run_forwards_loop = SubResource( 10 )
+anims/aim_gun = ExtResource( 8 )
+anims/fall_loop = SubResource( 3 )
+anims/idle_loop = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/land = SubResource( 6 )
+anims/melee = SubResource( 7 )
+anims/run_backwards_loop = SubResource( 8 )
+anims/run_forwards_loop = SubResource( 9 )
 anims/strafe_left_loop = ExtResource( 5 )
 anims/strafe_right_loop = ExtResource( 6 )
-anims/throw = SubResource( 11 )
-anims/tpose = SubResource( 12 )
+anims/throw = SubResource( 10 )
+anims/tpose = SubResource( 11 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 30 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Aiming/blend_amount = 0.0
@@ -1392,7 +1292,7 @@ parameters/Throw/active = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.01107, 0 )
-shape = SubResource( 32 )
+shape = SubResource( 31 )
 
 [node name="CameraRemote" type="RemoteTransform" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2994, 0 )

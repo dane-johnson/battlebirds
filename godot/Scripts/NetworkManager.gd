@@ -13,6 +13,9 @@ var local_player
 func _ready():
 	## Hook up network signals
 	get_tree().connect("network_peer_connected", self, "init_remote_player")
+	
+func is_local(node):
+	return node.is_network_master()
 
 func init_remote_player(peer_id):
 	var remote_player = player_prefab.instance()

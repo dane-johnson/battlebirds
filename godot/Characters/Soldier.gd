@@ -2,6 +2,7 @@ extends KinematicBody
 
 onready var movement_controller = $MovementController
 onready var anim_tree = $AnimationTree
+onready var weapon_manager = $Skeleton2/Skeleton/RightHand/WeaponManager
 
 var aiming
 var look_direction : Basis

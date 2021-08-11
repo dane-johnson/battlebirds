@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Weapons/raw/muzzleflash.glb" type="PackedScene" id=2]
+
+[node name="muzzleflash" instance=ExtResource( 2 )]
+
+[node name="MuzzleFlash" parent="." index="0"]
+transform = Transform( 0.194544, 0, 0, 0, 0.194544, 0, 0, 0, 0.194544, -0.000881314, 0.00360949, 0.00739032 )
