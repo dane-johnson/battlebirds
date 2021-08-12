@@ -95,16 +95,21 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "rotate_flash"
+}, {
+"args": [  ],
+"method": "signal_fired"
 } ]
 }
 
 [node name="MachineGun" type="Spatial"]
 script = ExtResource( 4 )
+damage = 3.0
+spread_angle = 0.614
 crosshair_frame = 82
 
 [node name="Cube" type="MeshInstance" parent="."]

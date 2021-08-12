@@ -2,6 +2,8 @@ extends Spatial
 
 var tgt : Vector3
 
+onready var camera = $Camera
+
 const horiz_sensitivity = 1.0/100.0
 const vert_sensitivity = 1.0/100.0
 const speed = 10.0
