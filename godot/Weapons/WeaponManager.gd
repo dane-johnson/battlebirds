@@ -39,7 +39,7 @@ func _physics_process(_delta):
 	var space_state = get_world().direct_space_state
 	for hitscan in hitscans:
 		var camera = camera_rig.camera.global_transform
-		var src = camera.origin
+		var src = camera.origin - camera.basis.z * 2.5 ## Go out in front of the camera
 		var ray = Vector3.FORWARD * 1000
 		ray = ray.rotated(Vector3.UP, randf() * hitscan["spread"])
 		ray = ray.rotated(Vector3.FORWARD, randf() * TAU)
