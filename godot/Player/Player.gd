@@ -1,14 +1,10 @@
 extends Spatial
 
-var dirt_prefab = preload("res://Effects/DirtHit.tscn")
-
 onready var camera_rig = $CameraRig
 onready var soldier = $Soldier
 
 var id
 var local = true
-
-var hitscans = []
 
 func _ready():
 	if local:
@@ -19,7 +15,8 @@ func _ready():
 		remove_child(camera_rig)
 		camera_rig.queue_free()
 	soldier.movement_controller.local = local
-	soldier.weapon_manager.connect("weapon_fired", self, "add_hitscan")
+	soldier.weapon_manager.camera_rig = camera_rig
+	soldier.weapon_manager.raycast_ignores.append(soldier)
 	
 func _process(_delta):
 	if not local: return
@@ -45,22 +42,6 @@ func _process(_delta):
 			var phi = atan2(-vel.x, -vel.z)
 			soldier.look_direction = Basis(Vector3.UP, phi)
 			
-func _physics_process(_delta):
-	var space_state = get_world().direct_space_state
-	for hitscan in hitscans:
-		var camera = camera_rig.camera.global_transform
-		var src = camera.origin
-		var ray = Vector3.FORWARD * 1000
-		ray = ray.rotated(Vector3.UP, randf() * hitscan["spread"])
-		ray = ray.rotated(Vector3.FORWARD, randf() * TAU)
-		ray = camera.xform(ray)
-		var dest = src + ray
-		var result = space_state.intersect_ray(src, dest, [soldier])
-		if result.has("collider"):
-			rpc("do_hit", hitscan, result)
-	hitscans = []
-		
-
 func _input(event):
 	if not local: return
 	if event is InputEventMouseMotion:
@@ -73,12 +54,3 @@ func _input(event):
 			KEY_2:
 				soldier.weapon_manager.rpc("set_active_weapon", 1)
 
-func add_hitscan(damage, spread_angle):
-	hitscans.append({"damage": damage, "spread": spread_angle})
-
-remotesync func do_hit(hitscan, result):
-	var dirt = dirt_prefab.instance()
-	get_tree().get_root().add_child(dirt)
-	dirt.transform.origin = result["position"]
-	if result["normal"] != Vector3.FORWARD:
-		dirt.look_at(result["normal"] + result["position"], Vector3.FORWARD)
