@@ -1,6 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Materials/concrete.material" type="Material" id=1]
+[ext_resource path="res://Materials/raw/concrete.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.48, 0.48, 0.48, 1 )
+albedo_texture = ExtResource( 2 )
+metallic_specular = 0.2
+uv1_scale = Vector3( 50, 50, 1 )
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.933333, 0.521569, 0.188235, 1 )
@@ -21,7 +28,7 @@ use_collision = true
 width = 317.619
 height = 0.1
 depth = 414.839
-material = ExtResource( 1 )
+material = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
