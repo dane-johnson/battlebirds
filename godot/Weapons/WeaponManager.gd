@@ -54,5 +54,9 @@ remotesync func do_hit(hitscan, result):
 	var dirt = dirt_prefab.instance()
 	get_tree().get_root().add_child(dirt)
 	dirt.transform.origin = result["position"]
-	if result["normal"] != Vector3.FORWARD:
+	if result["normal"] == Vector3.FORWARD:
+		pass ## Already facing the right way
+	elif result["normal"] == Vector3.BACK:
+		dirt.rotate_x(PI) ## Turn totally around
+	else:
 		dirt.look_at(result["normal"] + result["position"], Vector3.FORWARD)
