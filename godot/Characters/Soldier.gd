@@ -9,6 +9,10 @@ var look_direction : Basis
 var was_falling
 onready var player = get_parent()
 
+func _ready():
+	if not player.local: return
+	$AimTimer.connect("timeout", self, "unaim")
+
 func _process(_delta):
 	
 	transform.basis = look_direction
@@ -31,14 +35,22 @@ func _process(_delta):
 
 func _input(event):
 	if not player.local: return
-	if event is InputEventMouseButton:
-		if event.button_index == 2:
-			aiming = event.pressed
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE and event.pressed and not event.echo:
 			movement_controller.jump = true
 			if movement_controller.on_ground:
 				anim_tree["parameters/Jumping/active"] = true
+
+func start_aiming():
+	aiming = true
+	$AimTimer.stop()
+
+func stop_aiming():
+	$AimTimer.start()
+
+func unaim():
+	aiming = false
+		
 
 remote func sync_variables(aiming, was_falling, look_direction):
 	self.aiming = aiming

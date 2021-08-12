@@ -25,11 +25,12 @@ func _process(_delta):
 	move_vec.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	move_vec.z = Input.get_action_strength("backwards") - Input.get_action_strength("forwards")
 	soldier.movement_controller.move_vec = camera_rig.transform.basis.xform(move_vec)
-	if soldier.aiming:
-		if Input.is_action_just_pressed("fire"):
-			soldier.weapon_manager.rpc("fire")
-		if Input.is_action_just_released("fire"):
-			soldier.weapon_manager.rpc("unfire")
+	if Input.is_action_just_pressed("fire"):
+		soldier.weapon_manager.rpc("fire")
+		soldier.start_aiming()
+	if Input.is_action_just_released("fire"):
+		soldier.weapon_manager.rpc("unfire")
+		soldier.stop_aiming()
 	## Rotation
 	if soldier.aiming:
 		soldier.look_direction = camera_rig.transform.basis
