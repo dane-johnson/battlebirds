@@ -124,6 +124,11 @@ material/3 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386865, 0.283777 )
 visible = false
 
+[node name="OmniLight" type="OmniLight" parent="muzzleflash"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00353861, -0.00284213, 0.00472426 )
+light_color = Color( 0.35, 0.330808, 0.1855, 1 )
+omni_range = 4.0
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 6 )
 max_distance = 100.0
