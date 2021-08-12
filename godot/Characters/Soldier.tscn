@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scripts/MovementController.gd" type="Script" id=1]
 [ext_resource path="res://Characters/raw/Material_001.material" type="Material" id=2]
@@ -1160,6 +1160,9 @@ nodes/Throw/position = Vector2( 1620, -40 )
 nodes/output/position = Vector2( 1880, -60 )
 node_connections = [ "output", 0, "Throw", "Aiming", 0, "Landing", "Aiming", 1, "Animation", "Falling", 0, "Movement", "Falling", 1, "Animation 2", "Jumping", 0, "Falling", "Jumping", 1, "Animation 3", "Landing", 0, "Jumping", "Landing", 1, "Animation 4", "Melee", 0, "Aiming", "Melee", 1, "Animation 5", "Throw", 0, "Melee", "Throw", 1, "Animation 6" ]
 
+[sub_resource type="SphereShape" id=32]
+radius = 0.81
+
 [sub_resource type="CapsuleShape" id=31]
 radius = 0.5
 height = 0.92
@@ -1258,7 +1261,7 @@ material/0 = ExtResource( 3 )
 material/1 = ExtResource( 2 )
 
 [node name="RightHand" type="BoneAttachment" parent="Skeleton2/Skeleton"]
-transform = Transform( -0.916435, 0.400184, -0.000192866, -0.400167, -0.9164, -0.00892052, -0.00374614, -0.00809762, 0.999961, -0.925852, -0.16162, 0.0215805 )
+transform = Transform( -0.916548, 0.399925, -0.000864565, -0.399923, -0.916547, -0.00209191, -0.0016286, -0.00157133, 0.999998, -0.925849, -0.161211, 0.0205574 )
 bone_name = "hand.r"
 
 [node name="WeaponManager" parent="Skeleton2/Skeleton/RightHand" instance=ExtResource( 7 )]
@@ -1290,7 +1293,11 @@ parameters/Melee/active = false
 parameters/Movement/blend_position = Vector2( 0, 0 )
 parameters/Throw/active = false
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="FootCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.881837, 0 )
+shape = SubResource( 32 )
+
+[node name="BodyCollision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.01107, 0 )
 shape = SubResource( 31 )
 
