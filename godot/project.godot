@@ -70,6 +70,7 @@ fire={
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/physics_engine="GodotPhysics"
 3d/godot_physics/use_bvh=false
 3d/default_gravity=2.0
 3d/default_linear_damp=5.0

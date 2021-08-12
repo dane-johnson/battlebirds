@@ -1,13 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Materials/concrete.material" type="Material" id=1]
-[ext_resource path="res://Materials/raw/concrete.png" type="Texture" id=2]
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.48, 0.48, 0.48, 1 )
-albedo_texture = ExtResource( 2 )
-metallic_specular = 0.2
-uv1_scale = Vector3( 50, 50, 1 )
+[ext_resource path="res://Props/Fort.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.933333, 0.521569, 0.188235, 1 )
@@ -21,18 +15,6 @@ background_sky = SubResource( 1 )
 [node name="Demo" type="Spatial"]
 
 [node name="Obstacles" type="Spatial" parent="."]
-
-[node name="Floor" type="CSGBox" parent="Obstacles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789814, 0 )
-use_collision = true
-width = 317.619
-height = 0.1
-depth = 414.839
-material = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="Walls" type="Spatial" parent="Obstacles"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789814, 0 )
@@ -100,6 +82,9 @@ radius = 18.0
 height = 19.652
 sides = 16
 material = ExtResource( 1 )
+
+[node name="Fort" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17611, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

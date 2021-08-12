@@ -5,8 +5,9 @@ class_name MovementController
 export(NodePath) var body_node
 onready var body: KinematicBody = get_node(body_node)
 
-export(float) var move_speed = 1.0
+export(float) var move_accel = 1.0
 export(float) var jump_power = 30.0
+export(float) var max_speed = 10.0
 
 export(float) var lerp_speed = 30.0
 
@@ -31,13 +32,27 @@ func _physics_process(delta):
 		return
 	if jump:
 		if on_ground:
-			move_vec.y = jump_power
+			velocity.y += jump_power
 		jump = false
-	
-	velocity = body.move_and_slide(velocity + gravity + move_vec * move_speed, Vector3.UP)
-	if on_ground:
-		velocity *= 0.9 ## Friction
-	
+
+	var flat_vel = Vector2(velocity.x, velocity.z)
+
+	if move_vec.length_squared() > 0.25:
+		flat_vel += Vector2(move_vec.x, move_vec.z) * move_accel
+	else:
+		flat_vel -= flat_vel.normalized() * move_accel
+	if flat_vel.length_squared() > max_speed * max_speed:
+		flat_vel = flat_vel.normalized() * max_speed;
+	if abs(flat_vel.x) < 0.5:
+		flat_vel.x = 0
+	if abs(flat_vel.y) < 0.5:
+		flat_vel.y = 0
+
+	velocity.x = flat_vel.x
+	velocity.z = flat_vel.y
+
+	velocity = body.move_and_slide(velocity + gravity, Vector3.UP, true)
+
 	on_ground = body.is_on_floor()
 
 func _process(_delta):
