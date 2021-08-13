@@ -51,6 +51,10 @@ func stop_aiming():
 
 func unaim():
 	aiming = false
+
+master func impact(force):
+	print(force)
+	movement_controller.velocity += force * 100.0
 		
 remotesync func die():
 	$CameraRemote.remote_path = ""
