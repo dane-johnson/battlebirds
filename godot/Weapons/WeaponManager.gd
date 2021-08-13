@@ -1,11 +1,12 @@
 extends Spatial
 
+signal active_weapon_changed
+
 const dirt_prefab = preload("res://Effects/DirtHit.tscn")
 
 var active_weapon = 0
 
 onready var weapons = $Weapons
-onready var crosshair = $Centering/Crosshair
 
 var hitscans = []
 var camera_rig
@@ -15,14 +16,12 @@ func _ready():
 	set_active_weapon(0)
 	for weapon in weapons.get_children():
 		weapon.connect("fired", self, "on_weapon_fired")
-	if not is_network_master():
-		crosshair.hide()
 
 remotesync func set_active_weapon(new_active_weapon):
 	weapons.get_child(active_weapon).hide()
 	weapons.get_child(new_active_weapon).show()
-	crosshair.frame = weapons.get_child(new_active_weapon).crosshair_frame
 	active_weapon = new_active_weapon
+	emit_signal("active_weapon_changed", weapons.get_child(new_active_weapon))
 
 remotesync func fire():
 	weapons.get_child(active_weapon).fire()

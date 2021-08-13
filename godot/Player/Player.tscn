@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://UI/raw/crosshairs.png" type="Texture" id=2]
 [ext_resource path="res://Characters/Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Camera/CameraRig.gd" type="Script" id=4]
+[ext_resource path="res://Player/HUD.gd" type="Script" id=5]
 
 [node name="Player" type="Spatial"]
 script = ExtResource( 1 )
@@ -18,3 +20,19 @@ transform = Transform( 1, 0, 0, 0, 0.989175, 0.146739, 0, -0.146739, 0.989175, 0
 far = 1000.0
 
 [node name="Listener" type="Listener" parent="CameraRig"]
+
+[node name="HUD" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="Sprite" parent="HUD"]
+texture = ExtResource( 2 )
+hframes = 20
+vframes = 10
+frame = 81

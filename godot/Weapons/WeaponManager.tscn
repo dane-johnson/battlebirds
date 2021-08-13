@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://Weapons/Pistol.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/raw/crosshairs.png" type="Texture" id=3]
 [ext_resource path="res://Weapons/MachineGun.tscn" type="PackedScene" id=4]
 
 [node name="WeaponManager" type="Spatial"]
@@ -16,18 +15,3 @@ script = ExtResource( 1 )
 transform = Transform( 4.39017, 0, 0, 0, 4.39017, 0, 0, 0, 4.39017, 0, 0, 0 )
 visible = false
 spread_angle = 0.061
-
-[node name="Centering" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Crosshair" type="Sprite" parent="Centering"]
-texture = ExtResource( 3 )
-hframes = 20
-vframes = 10
-frame = 81
