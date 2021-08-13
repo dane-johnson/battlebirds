@@ -1258,7 +1258,7 @@ material/0 = ExtResource( 3 )
 material/1 = ExtResource( 2 )
 
 [node name="RightHand" type="BoneAttachment" parent="Skeleton2/Skeleton"]
-transform = Transform( -0.916613, 0.399773, -0.00125214, -0.399775, -0.916612, 0.0018575, -0.000404725, 0.00220349, 0.999998, -0.925847, -0.160978, 0.0199644 )
+transform = Transform( -0.916119, 0.400903, 0.00174789, -0.400787, -0.915727, -0.0285392, -0.0098404, -0.0268455, 0.999592, -0.925855, -0.162834, 0.0245047 )
 bone_name = "hand.r"
 
 [node name="WeaponManager" parent="Skeleton2/Skeleton/RightHand" instance=ExtResource( 7 )]

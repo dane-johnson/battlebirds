@@ -16,12 +16,14 @@ func on_shot():
 		ammo_in_clip -= 1
 	elif ammo_in_clip == 1:
 		ammo_in_clip = 0
+	else:
 		unfire()
 
 func reload():
 	if $ReloadTimer.is_stopped() and ammo_in_clip < shots_per_clip:
 		reloading = true
 		$ReloadTimer.start()
+		$ReloadSound.play()
 	
 func unfire():
 	$AnimationPlayer.stop()

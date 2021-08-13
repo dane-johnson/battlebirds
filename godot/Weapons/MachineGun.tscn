@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Weapons/raw/barrel.material" type="Material" id=1]
 [ext_resource path="res://Weapons/raw/metal.material" type="Material" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Weapons/raw/Material.material" type="Material" id=5]
 [ext_resource path="res://Effects/machinegunshoot.wav" type="AudioStream" id=6]
 [ext_resource path="res://Weapons/Muzzleflash.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Effects/reload.wav" type="AudioStream" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -95,17 +96,17 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.05, 0.1, 0.11 ),
+"times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "on_shot"
+}, {
 "args": [  ],
 "method": "signal_fired"
 }, {
 "args": [  ],
 "method": "rotate_flash"
-}, {
-"args": [  ],
-"method": "on_shot"
 } ]
 }
 
@@ -142,3 +143,6 @@ anims/fire = SubResource( 2 )
 
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )

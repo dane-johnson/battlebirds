@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Weapons/raw/barrel.material" type="Material" id=1]
 [ext_resource path="res://Weapons/Muzzleflash.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Weapons/raw/metal.material" type="Material" id=4]
 [ext_resource path="res://Weapons/raw/wood.material" type="Material" id=5]
 [ext_resource path="res://Weapons/Pistol.gd" type="Script" id=6]
+[ext_resource path="res://Effects/reload.wav" type="AudioStream" id=7]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -61,7 +62,7 @@ tracks/0/keys = {
 "values": [ false, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/path = NodePath("Sounds/FireSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -111,13 +112,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00353861, -0.00284213, 0.00
 light_color = Color( 0.35, 0.330808, 0.1855, 1 )
 omni_range = 2.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 3 )
-max_distance = 100.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fire = SubResource( 2 )
 
 [node name="ReloadTimer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="Sounds" type="Spatial" parent="."]
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource( 3 )
+max_distance = 100.0
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource( 7 )

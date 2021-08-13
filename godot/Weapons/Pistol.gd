@@ -20,6 +20,7 @@ func reload():
 	if $ReloadTimer.is_stopped() and ammo_in_clip < shots_per_clip:
 		reloading = true
 		$ReloadTimer.start()
+		$Sounds/ReloadSound.play()
 
 func on_reload_complete():
 	reloading = false
