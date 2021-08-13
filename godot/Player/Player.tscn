@@ -2,10 +2,13 @@
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://UI/raw/crosshairs.png" type="Texture" id=2]
-[ext_resource path="res://Characters/Soldier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Camera/CameraRig.gd" type="Script" id=4]
 [ext_resource path="res://Player/HUD.gd" type="Script" id=5]
 [ext_resource path="res://UI/raw/CommanderEdge-P587.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 39
@@ -13,8 +16,6 @@ font_data = ExtResource( 6 )
 
 [node name="Player" type="Spatial"]
 script = ExtResource( 1 )
-
-[node name="Soldier" parent="." instance=ExtResource( 3 )]
 
 [node name="CameraRig" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38673, 0 )
@@ -50,6 +51,14 @@ vframes = 10
 region_enabled = true
 region_rect = Rect2( -2, -2, 1380, 690 )
 
+[node name="RespawnTimer" type="Label" parent="HUD/Center"]
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "Respawn
+5"
+align = 1
+
 [node name="Counter" type="Label" parent="HUD"]
 anchor_left = 0.05
 anchor_top = 0.95
@@ -61,3 +70,7 @@ text = "Weapon 10/100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

@@ -49,6 +49,5 @@ func join_game(ip):
 	init_local_player()
 	
 static func setup_player(player, peer_id, local):
-	player.id = peer_id
 	player.set_name("Player-" + str(peer_id)) ## Must use naming convention for network sync
 	player.local = local
