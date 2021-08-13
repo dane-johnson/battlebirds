@@ -14,6 +14,7 @@ func _ready():
 	## Hook up network signals
 	get_tree().connect("network_peer_connected", self, "init_remote_player")
 	get_tree().connect("network_peer_disconnected", self, "delete_remote_player")
+	get_tree().connect("server_disconnected", self, "shutdown_game")
 	
 func is_local(node):
 	return node.is_network_master()
@@ -25,6 +26,12 @@ func init_remote_player(peer_id):
 	## (Maybe not a great idea, fix this if I ever become famous)
 	remote_player.set_network_master(peer_id)
 	add_child(remote_player)
+	rpc_id(peer_id, "sync_player", local_player.name, local_player.alive)
+
+remote func sync_player(name, alive):
+	var remote_player = get_node(name)
+	if alive:
+		remote_player.spawn()
 
 func delete_remote_player(peer_id):
 	var remote_player = get_node("Player-" + (str(peer_id)))
@@ -53,6 +60,9 @@ func join_game(ip):
 	## Id is arbitrary large number negotiated with server
 	id = peer.get_unique_id()
 	init_local_player()
+
+func shutdown_game():
+	get_tree().quit()
 	
 static func setup_player(player, peer_id, local):
 	player.set_name("Player-" + str(peer_id)) ## Must use naming convention for network sync

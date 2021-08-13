@@ -77,7 +77,7 @@ func _input(event):
 				
 func on_respawn():
 	rpc("spawn")
-	
+
 remotesync func spawn():
 	soldier = soldier_prefab.instance()
 	add_child(soldier)
