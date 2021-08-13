@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/HUD.gd" type="Script" id=5]
 [ext_resource path="res://UI/raw/CommanderEdge-P587.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 42
 font_data = ExtResource( 6 )
 
@@ -55,7 +55,7 @@ region_rect = Rect2( -2, -2, 1380, 690 )
 [node name="RespawnTimer" type="Label" parent="HUD/Center"]
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Respawn
 5"
 align = 1
@@ -63,7 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Counter" type="Label" parent="HUD"]
+[node name="AmmoCounter" type="Label" parent="HUD"]
 anchor_left = 0.05
 anchor_top = 0.95
 anchor_right = 0.05
@@ -71,6 +71,19 @@ anchor_bottom = 0.95
 grow_vertical = 0
 custom_fonts/font = SubResource( 2 )
 text = "Weapon 10/100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthCounter" type="Label" parent="HUD"]
+anchor_left = 0.95
+anchor_top = 0.95
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Health 100/100"
 __meta__ = {
 "_edit_use_anchors_": false
 }

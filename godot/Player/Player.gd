@@ -29,6 +29,7 @@ func _process(_delta):
 	## Update HUD
 	if alive:
 		hud.update_weapon(active_weapon)
+		hud.update_health(health_manager)
 	else:
 		hud.update_respawn(int(ceil(respawn_timer.time_left)))
 

@@ -68,7 +68,7 @@ func _physics_process(_delta):
 			rpc("do_hit", hitscan, result)
 			var health_manager = result["collider"].get_node_or_null("HealthManager")
 			if health_manager:
-				health_manager.rpc("hurt", 100)
+				health_manager.rpc("hurt", hitscan["damage"])
 
 	hitscans = []
 
