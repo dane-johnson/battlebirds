@@ -13,6 +13,7 @@ var local_player
 func _ready():
 	## Hook up network signals
 	get_tree().connect("network_peer_connected", self, "init_remote_player")
+	get_tree().connect("network_peer_disconnected", self, "delete_remote_player")
 	
 func is_local(node):
 	return node.is_network_master()
@@ -24,6 +25,11 @@ func init_remote_player(peer_id):
 	## (Maybe not a great idea, fix this if I ever become famous)
 	remote_player.set_network_master(peer_id)
 	add_child(remote_player)
+
+func delete_remote_player(peer_id):
+	var remote_player = get_node("Player-" + (str(peer_id)))
+	remove_child(remote_player)
+	remote_player.queue_free()
 
 func init_local_player():
 	local_player = player_prefab.instance()

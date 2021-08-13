@@ -30,6 +30,8 @@ func _process(_delta):
 		hud.update_weapon(active_weapon)
 	else:
 		hud.update_respawn(int(ceil(respawn_timer.time_left)))
+
+	## Update soldier stuff
 	if not alive: return
 	## Polling Inputs
 	var move_vec = Vector3.ZERO
