@@ -20,9 +20,13 @@ func _ready():
 	ammo_in_reserve = max_ammo - shots_per_clip
 
 func fire():
+	## All weapons should implement `fire' (right?)
 	push_error(self.name + " does not implement `fire()`!")
 	
 func unfire():
+	pass
+
+func reload():
 	pass
 
 func signal_fired():

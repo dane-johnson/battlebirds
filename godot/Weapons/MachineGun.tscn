@@ -113,6 +113,7 @@ tracks/2/keys = {
 script = ExtResource( 4 )
 damage = 3.0
 spread_angle = 0.614
+shots_per_clip = 20
 crosshair_frame = 82
 
 [node name="Cube" type="MeshInstance" parent="."]
@@ -138,3 +139,6 @@ max_distance = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fire = SubResource( 2 )
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true

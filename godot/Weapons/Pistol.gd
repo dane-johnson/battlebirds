@@ -5,6 +5,7 @@ func _ready():
 	$ReloadTimer.connect("timeout", self, "on_reload_complete")
 
 func fire():
+	if reloading: return
 	if ammo_in_clip > 0:
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play("fire")
@@ -16,7 +17,7 @@ func rotate_flash():
 	$MuzzleFlash.rotate_z(randf() * TAU)
 
 func reload():
-	if $ReloadTimer.is_stopped():
+	if $ReloadTimer.is_stopped() and ammo_in_clip < shots_per_clip:
 		reloading = true
 		$ReloadTimer.start()
 
