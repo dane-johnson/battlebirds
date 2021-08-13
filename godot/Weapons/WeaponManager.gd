@@ -66,6 +66,10 @@ func _physics_process(_delta):
 		var result = space_state.intersect_ray(src, dest, raycast_ignores)
 		if result.has("collider"):
 			rpc("do_hit", hitscan, result)
+			var health_manager = result["collider"].get_node_or_null("HealthManager")
+			if health_manager:
+				health_manager.rpc("hurt", 100)
+
 	hitscans = []
 
 remotesync func do_hit(hitscan, result):
@@ -83,4 +87,3 @@ remotesync func fire_projectile(projectile_name, projectile_transform):
 	var projectile = projectile_names[projectile_name].instance()
 	get_tree().get_root().add_child(projectile)
 	projectile.transform = projectile_transform
-

@@ -12,6 +12,7 @@ var alive = false
 var soldier
 var weapon_manager
 var active_weapon
+var health_manager
 
 func _ready():
 	if local:
@@ -72,22 +73,27 @@ func _input(event):
 			KEY_R:
 				active_weapon.reload()
 			KEY_P:
-				soldier.rpc("die")
-				alive = false
-				respawn_timer.start()
-				hud.change_mode(hud.DEAD)
+				die()
 				
 func on_respawn():
 	rpc("spawn")
 
 remotesync func spawn():
+	## Instance soldier
 	soldier = soldier_prefab.instance()
 	soldier.set_network_master(get_network_master())
 	add_child(soldier)
+	## Setup weapons
 	weapon_manager = soldier.weapon_manager
-	soldier.movement_controller.local = local
 	weapon_manager.camera_rig = camera_rig
 	weapon_manager.raycast_ignores.append(soldier)
+	## Setup health
+	health_manager = soldier.health_manager
+	if local:
+		health_manager.connect("dead", self, "die", [], CONNECT_ONESHOT)
+	## Setup movement
+	soldier.movement_controller.local = local
+
 
 	hud.change_mode(hud.SOLDIER)
 	if local:
@@ -96,6 +102,12 @@ remotesync func spawn():
 		active_weapon_changed(weapon_manager.weapons.get_child(0))
 
 	alive = true
+
+func die():
+	soldier.rpc("die")
+	alive = false
+	respawn_timer.start()
+	hud.change_mode(hud.DEAD)
 
 func active_weapon_changed(weapon):
 	active_weapon = weapon
