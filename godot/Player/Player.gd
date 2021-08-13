@@ -80,6 +80,7 @@ func on_respawn():
 
 remotesync func spawn():
 	soldier = soldier_prefab.instance()
+	soldier.set_network_master(get_network_master())
 	add_child(soldier)
 	weapon_manager = soldier.weapon_manager
 	soldier.movement_controller.local = local

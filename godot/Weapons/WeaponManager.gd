@@ -35,6 +35,8 @@ func on_weapon_fired(damage, spread_angle):
 	hitscans.append({"damage": damage, "spread": spread_angle})
 	
 func _physics_process(_delta):
+	if not is_network_master():
+		return
 	var space_state = get_world().direct_space_state
 	for hitscan in hitscans:
 		var camera = camera_rig.camera.global_transform

@@ -49,7 +49,7 @@ func host_game():
 	peer.create_server(SERVER_PORT, MAX_PLAYERS)
 	get_tree().network_peer = peer
 	server = true
-	id = peer.get_unique_id() ## This should be 1 unless godot changes it
+	id = peer.get_unique_id() ## This should be 1 unless Godot changes it
 	init_local_player()
 
 func join_game(ip):
