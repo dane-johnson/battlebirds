@@ -28,7 +28,7 @@ func _ready():
 func _process(_delta):
 	if not local: return
 	## Update HUD
-	hud.update_counter(active_weapon)
+	hud.update_weapon(active_weapon)
 	## Polling Inputs
 	var move_vec = Vector3.ZERO
 	move_vec.x = Input.get_action_strength("right") - Input.get_action_strength("left")

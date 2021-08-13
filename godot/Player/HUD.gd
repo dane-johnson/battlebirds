@@ -6,6 +6,9 @@ onready var counter = $Counter
 func set_crosshair_frame(frame):
 	crosshair.frame = frame
 
-func update_counter(weapon):
-	var reserve = "∞" if weapon.unlimited_ammo else str(weapon.ammo_in_reserve)
-	counter.text = "%s %d/%s" % [weapon.name, weapon.ammo_in_clip, reserve]
+func update_weapon(weapon):
+	if weapon.reloading:
+		counter.text = "Reloading..."
+	else:
+		var reserve = "∞" if weapon.unlimited_ammo else str(weapon.ammo_in_reserve)
+		counter.text = "%s %d/%s" % [weapon.name, weapon.ammo_in_clip, reserve]
