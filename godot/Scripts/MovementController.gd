@@ -22,7 +22,7 @@ var move_vec = Vector3.ZERO
 
 var last_pos
 
-const gravity = ProjectSettings["physics/3d/default_gravity"] * Vector3.DOWN
+const gravity = 2.0 * Vector3.DOWN
 const dampening = ProjectSettings["physics/3d/default_linear_damp"]
 
 func _physics_process(delta):

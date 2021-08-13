@@ -65,6 +65,8 @@ func _input(event):
 				weapon_manager.rpc("set_active_weapon", 1)
 			KEY_R:
 				active_weapon.reload()
+			KEY_P:
+				soldier.rpc("die")
 
 func active_weapon_changed(weapon):
 	active_weapon = weapon

@@ -51,6 +51,11 @@ func stop_aiming():
 func unaim():
 	aiming = false
 		
+remotesync func die():
+	$CameraRemote.remote_path = ""
+	$BodyCollision.queue_free()
+	$Skeleton2/Skeleton.physical_bones_start_simulation()
+	anim_tree.active = false
 
 remote func sync_variables(aiming, was_falling, look_direction):
 	self.aiming = aiming
