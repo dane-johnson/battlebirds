@@ -9,7 +9,14 @@ export(int) var max_ammo = 100
 export(int) var shots_per_clip = 10
 export(int) var crosshair_frame = 11
 
+var ammo_in_clip = 0
+var ammo_in_reserve = 0
+
 signal fired
+
+func _ready():
+	ammo_in_clip = shots_per_clip
+	ammo_in_reserve = max_ammo - shots_per_clip
 
 func fire():
 	push_error(self.name + " does not implement `fire()`!")
