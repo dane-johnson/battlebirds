@@ -11,6 +11,7 @@ export(int) var crosshair_frame = 11
 
 var ammo_in_clip = 0
 var ammo_in_reserve = 0
+var reloading = false
 
 signal fired
 
