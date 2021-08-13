@@ -4,6 +4,10 @@ signal active_weapon_changed
 
 const dirt_prefab = preload("res://Effects/DirtHit.tscn")
 
+const projectile_names = {
+	"rocket": preload("res://Weapons/Rocket.tscn")
+}
+
 var active_weapon = 0
 
 onready var weapons = $Weapons
@@ -36,20 +40,20 @@ func on_weapon_fired(damage, spread_angle):
 		return
 	hitscans.append({"damage": damage, "spread": spread_angle})
 
-func on_weapon_fired_projectile(projectile_prefab):
-	projectiles.append(projectile_prefab)
+func on_weapon_fired_projectile(projectile_name):
+	projectiles.append(projectile_name)
 	
 func _physics_process(_delta):
 	if not is_network_master():
 		return
 	var camera = camera_rig.camera.global_transform
-	var src = camera.origin - camera.basis.z * 2.5 ## Go out in front of the camera
+	var src = camera.origin - camera.basis.z * 3.0 ## Go out in front of the camera and player
 	## Fire projectile weapons
-	for projectile_prefab in projectiles:
-		var projectile = projectile_prefab.instance()
-		get_tree().get_root().add_child(projectile)
-		projectile.global_transform.basis = camera.basis
-		projectile.global_transform.origin = src
+	for projectile_name in projectiles:
+		var projectile_transform = Transform()
+		projectile_transform.basis = camera.basis
+		projectile_transform.origin = src
+		rpc("fire_projectile", projectile_name, projectile_transform)
 	projectiles = []
 	## Fire hitscan weapons
 	var space_state = get_world().direct_space_state
@@ -74,3 +78,9 @@ remotesync func do_hit(hitscan, result):
 		dirt.rotate_x(PI) ## Turn totally around
 	else:
 		dirt.look_at(result["normal"] + result["position"], Vector3.FORWARD)
+
+remotesync func fire_projectile(projectile_name, projectile_transform):
+	var projectile = projectile_names[projectile_name].instance()
+	get_tree().get_root().add_child(projectile)
+	projectile.transform = projectile_transform
+

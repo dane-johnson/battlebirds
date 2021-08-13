@@ -6,21 +6,21 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.2, 0.2, 0.2 )
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.992188, 0.128141, 0.0387573, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=4]
 gravity = Vector3( 0, 1, 0 )
 angle = 720.0
 angle_random = 1.0
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 3 )
 hue_variation = 0.1
 hue_variation_random = 0.3
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 vertex_color_use_as_albedo = true
 params_billboard_mode = 3
@@ -29,10 +29,12 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_texture = ExtResource( 1 )
 
-[sub_resource type="QuadMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="QuadMesh" id=6]
+material = SubResource( 5 )
 
 [node name="Rocket" type="KinematicBody"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -42,5 +44,5 @@ shape = SubResource( 1 )
 amount = 20
 lifetime = 0.5
 local_coords = false
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )

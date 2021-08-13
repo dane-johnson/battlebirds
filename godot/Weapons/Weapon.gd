@@ -9,8 +9,8 @@ export(int) var max_ammo = 100
 export(int) var shots_per_clip = 10
 export(int) var crosshair_frame = 11
 
-## For projectile weapons
-export(PackedScene) var projectile_prefab
+## For projectile weapons, should be one of the keys from WeaponManager.projectile_names
+export(String) var projectile_name
 
 
 var ammo_in_clip = 0
@@ -38,4 +38,4 @@ func signal_fired():
 	emit_signal("fired", damage, spread_angle)
 
 func signal_fired_projectile():
-	emit_signal("fired_projectile", projectile_prefab)
+	emit_signal("fired_projectile", projectile_name)
