@@ -112,7 +112,7 @@ tracks/2/keys = {
 
 [node name="MachineGun" type="Spatial"]
 script = ExtResource( 4 )
-damage = 3.0
+damage = 7.0
 spread_angle = 0.614
 shots_per_clip = 20
 crosshair_frame = 82

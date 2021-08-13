@@ -93,7 +93,7 @@ tracks/2/keys = {
 
 [node name="Pistol" type="Spatial"]
 script = ExtResource( 6 )
-damage = 5.0
+damage = 17.0
 unlimited_ammo = true
 
 [node name="Cube" type="MeshInstance" parent="."]
