@@ -48,6 +48,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 20
 vframes = 10
+frame = 84
 region_enabled = true
 region_rect = Rect2( -2, -2, 1380, 690 )
 
@@ -58,6 +59,9 @@ custom_fonts/font = SubResource( 2 )
 text = "Respawn
 5"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Counter" type="Label" parent="HUD"]
 anchor_left = 0.05

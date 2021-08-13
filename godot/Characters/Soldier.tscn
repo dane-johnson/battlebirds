@@ -1256,7 +1256,7 @@ bones/8/name = "hand.r"
 bones/8/parent = 7
 bones/8/rest = Transform( 0.999544, -0.0301756, -0.000641308, 0.029701, 0.979598, 0.19876, -0.00536947, -0.198688, 0.980048, -1.37585e-07, 0.516694, -2.63045e-08 )
 bones/8/enabled = true
-bones/8/bound_children = [ NodePath("RightHand") ]
+bones/8/bound_children = [  ]
 bones/9/name = "upperleg.l"
 bones/9/parent = 0
 bones/9/rest = Transform( -0.991847, 0.127436, -4.00096e-06, 0.00590404, 0.0459202, -0.998928, -0.1273, -0.990783, -0.0462983, 0.324093, -0.993172, -1.4442 )
@@ -1295,7 +1295,7 @@ material/0 = ExtResource( 3 )
 material/1 = ExtResource( 2 )
 
 [node name="RightHand" type="BoneAttachment" parent="Skeleton2/Skeleton"]
-transform = Transform( -0.916568, 0.399877, -0.000987217, -0.399876, -0.916569, -0.000842735, -0.00124142, -0.000377387, 1, -0.925848, -0.161137, 0.0203699 )
+transform = Transform( -0.915742, 0.401745, 0.00417537, -0.40139, -0.914382, -0.0528491, -0.0174136, -0.0500719, 0.998594, -0.92585, -0.164418, 0.028097 )
 bone_name = "hand.r"
 
 [node name="WeaponManager" parent="Skeleton2/Skeleton/RightHand" instance=ExtResource( 7 )]

@@ -9,11 +9,16 @@ export(int) var max_ammo = 100
 export(int) var shots_per_clip = 10
 export(int) var crosshair_frame = 11
 
+## For projectile weapons
+export(PackedScene) var projectile_prefab
+
+
 var ammo_in_clip = 0
 var ammo_in_reserve = 0
 var reloading = false
 
 signal fired
+signal fired_projectile
 
 func _ready():
 	ammo_in_clip = shots_per_clip
@@ -31,3 +36,6 @@ func reload():
 
 func signal_fired():
 	emit_signal("fired", damage, spread_angle)
+
+func signal_fired_projectile():
+	emit_signal("fired_projectile", projectile_prefab)

@@ -9,6 +9,7 @@ var active_weapon = 0
 onready var weapons = $Weapons
 
 var hitscans = []
+var projectiles = []
 var camera_rig
 var raycast_ignores = []
 
@@ -16,6 +17,7 @@ func _ready():
 	set_active_weapon(0)
 	for weapon in weapons.get_children():
 		weapon.connect("fired", self, "on_weapon_fired")
+		weapon.connect("fired_projectile", self, "on_weapon_fired_projectile")
 
 remotesync func set_active_weapon(new_active_weapon):
 	weapons.get_child(active_weapon).hide()
@@ -33,14 +35,25 @@ func on_weapon_fired(damage, spread_angle):
 	if not is_network_master():
 		return
 	hitscans.append({"damage": damage, "spread": spread_angle})
+
+func on_weapon_fired_projectile(projectile_prefab):
+	projectiles.append(projectile_prefab)
 	
 func _physics_process(_delta):
 	if not is_network_master():
 		return
+	var camera = camera_rig.camera.global_transform
+	var src = camera.origin - camera.basis.z * 2.5 ## Go out in front of the camera
+	## Fire projectile weapons
+	for projectile_prefab in projectiles:
+		var projectile = projectile_prefab.instance()
+		get_tree().get_root().add_child(projectile)
+		projectile.global_transform.basis = camera.basis
+		projectile.global_transform.origin = src
+	projectiles = []
+	## Fire hitscan weapons
 	var space_state = get_world().direct_space_state
 	for hitscan in hitscans:
-		var camera = camera_rig.camera.global_transform
-		var src = camera.origin - camera.basis.z * 2.5 ## Go out in front of the camera
 		var ray = Vector3.FORWARD * 1000
 		ray = ray.rotated(Vector3.UP, randf() * hitscan["spread"])
 		ray = ray.rotated(Vector3.FORWARD, randf() * TAU)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://Weapons/Pistol.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapons/RocketLauncher.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapons/MachineGun.tscn" type="PackedScene" id=4]
 
 [node name="WeaponManager" type="Spatial"]
@@ -15,3 +16,7 @@ script = ExtResource( 1 )
 transform = Transform( 4.39017, 0, 0, 0, 4.39017, 0, 0, 0, 4.39017, 0, 0, 0 )
 visible = false
 spread_angle = 0.061
+
+[node name="RocketLauncher" parent="Weapons" instance=ExtResource( 3 )]
+visible = false
+unlimited_ammo = null
