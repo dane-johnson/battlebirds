@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SphereShape" id=4]
+radius = 8.80983
+
+[node name="SpawnPoint" type="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0404, 0, 62.8654 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
