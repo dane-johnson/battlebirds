@@ -77,13 +77,14 @@ func _input(event):
 				die()
 				
 func on_respawn():
-	rpc("spawn")
+	PlayerManager.rpc("add_to_spawnlist", NetworkManager.id)
 
-remotesync func spawn():
+remotesync func spawn(spawn_point = Transform()):
 	## Instance soldier
 	soldier = soldier_prefab.instance()
 	soldier.set_network_master(get_network_master())
 	add_child(soldier)
+	soldier.transform = spawn_point
 	## Setup weapons
 	weapon_manager = soldier.weapon_manager
 	weapon_manager.camera_rig = camera_rig
