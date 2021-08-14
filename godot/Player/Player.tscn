@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/HUD.gd" type="Script" id=5]
 [ext_resource path="res://UI/raw/CommanderEdge-P587.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 42
 font_data = ExtResource( 6 )
 
@@ -55,7 +55,7 @@ region_rect = Rect2( -2, -2, 1380, 690 )
 [node name="RespawnTimer" type="Label" parent="HUD/Center"]
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Respawn
 5"
 align = 1

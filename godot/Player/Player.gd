@@ -88,6 +88,8 @@ remotesync func spawn(spawn_point = Transform()):
 	## Setup weapons
 	weapon_manager = soldier.weapon_manager
 	weapon_manager.camera_rig = camera_rig
+	## Set correct look direction
+	camera_rig.snap_to(soldier.transform.basis)
 	weapon_manager.raycast_ignores.append(soldier)
 	## Setup health
 	health_manager = soldier.health_manager

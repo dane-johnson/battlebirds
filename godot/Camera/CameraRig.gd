@@ -16,3 +16,6 @@ func _process(delta):
 func add_to_tgt(vec):
 	tgt.y += vec.y
 	tgt.x = clamp(tgt.x + vec.x, -PI/4, PI/4)
+
+func snap_to(basis):
+	tgt = basis.get_euler()
