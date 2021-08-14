@@ -6,7 +6,7 @@ export(NodePath) var body_node
 onready var body: KinematicBody = get_node(body_node)
 
 export(float) var move_accel = 1.0
-export(float) var jump_power = 30.0
+export(float) var jump_power = 10.0
 export(float) var max_speed = 10.0
 
 export(float) var lerp_speed = 30.0
@@ -22,7 +22,7 @@ var move_vec = Vector3.ZERO
 
 var last_pos
 
-const gravity = 2.0 * Vector3.DOWN
+const gravity = ProjectSettings["physics/3d/default_gravity"] * Vector3.DOWN
 const dampening = ProjectSettings["physics/3d/default_linear_damp"]
 
 func _physics_process(delta):
@@ -30,9 +30,16 @@ func _physics_process(delta):
 		if last_pos:
 			body.transform.origin = lerp(body.transform.origin, last_pos, delta * lerp_speed)
 		return
+	
+	var snap
+	if on_ground:
+		snap = Vector3.DOWN * 2.0
+	else:
+		snap = Vector3.ZERO
 	if jump:
 		if on_ground:
 			velocity.y += jump_power
+			snap = Vector3.ZERO
 		jump = false
 
 	var flat_vel = Vector2(velocity.x, velocity.z)
@@ -51,7 +58,7 @@ func _physics_process(delta):
 	velocity.x = flat_vel.x
 	velocity.z = flat_vel.y
 
-	velocity = body.move_and_slide(velocity + gravity, Vector3.UP, true)
+	velocity = body.move_and_slide_with_snap(velocity + gravity * delta, snap, Vector3.UP, true)
 
 	on_ground = body.is_on_floor()
 

@@ -72,3 +72,12 @@ shadow_enabled = true
 [node name="SpawnPoints" type="Spatial" parent="."]
 
 [node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource( 7 )]
+
+[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2734, 0, 61.2196 )
+
+[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.988156, 0, 0.153452, 0, 1, 0, -0.153452, 0, -0.988156, 18.7928, 0, -62.0205 )
+
+[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.992726, 0, -0.120397, 0, 1, 0, 0.120397, 0, -0.992726, -19.3291, 0, -62.0205 )
