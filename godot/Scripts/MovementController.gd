@@ -62,7 +62,7 @@ func soldier_physics(delta):
 		jump = false
 
 	## Input driven movement
-	## Only concearned with xz axes
+	## Only concerned with xz axes
 	var flat_vel = Vector3(velocity.x, 0, velocity.z)
 
 	## Add move vec
