@@ -17,4 +17,3 @@ remotesync func player_enters(player_name, vehicle_name):
 	player.vehicle = vehicle
 	vehicle.enter()
 	vehicle.set_network_master(player.get_network_master())
-	print(vehicle.get_network_master())

@@ -176,6 +176,9 @@ script = ExtResource( 2 )
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource( 3 )
 body_node = NodePath("..")
+move_accel = 10.0
+max_speed = 80.0
+lerp_speed = 100.0
 
 [node name="Plane" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
