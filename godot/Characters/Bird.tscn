@@ -222,3 +222,5 @@ anims/Takeoff = SubResource( 13 )
 
 [node name="CameraRemote" type="RemoteTransform" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.67785 )
+update_rotation = false
+update_scale = false
