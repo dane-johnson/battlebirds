@@ -15,6 +15,9 @@ func _process(_delta):
 		var peer_id = spawn_list.pop_front()
 		spawn_id(safe_spawn, peer_id)
 
+func get_player_by_name(name):
+	return NetworkManager.get_node(name)
+
 func get_player(peer_id):
 	return NetworkManager.get_node("Player-" + str(peer_id))
 

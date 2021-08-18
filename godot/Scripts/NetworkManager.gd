@@ -26,11 +26,11 @@ func init_remote_player(peer_id):
 	## (Maybe not a great idea, fix this if I ever become famous)
 	remote_player.set_network_master(peer_id)
 	add_child(remote_player)
-	rpc_id(peer_id, "sync_player", local_player.name, local_player.alive)
+	rpc_id(peer_id, "sync_player", local_player.name, local_player.mode)
 
-remote func sync_player(name, alive):
+remote func sync_player(name, mode):
 	var remote_player = get_node(name)
-	if alive:
+	if mode == remote_player.SOLDIER:
 		remote_player.spawn()
 
 func delete_remote_player(peer_id):
@@ -66,4 +66,3 @@ func shutdown_game():
 	
 static func setup_player(player, peer_id, local):
 	player.set_name("Player-" + str(peer_id)) ## Must use naming convention for network sync
-	player.local = local

@@ -14,8 +14,6 @@ export(float) var max_speed = 10.0
 export(float) var lerp_speed = 30.0
 export(MovementMode) var movement_mode
 
-var local = true
-
 ## Set by this script
 var velocity = Vector3.ZERO
 var on_ground = false
@@ -29,7 +27,7 @@ const gravity = ProjectSettings["physics/3d/default_gravity"] * Vector3.DOWN
 const dampening = ProjectSettings["physics/3d/default_linear_damp"]
 
 func _physics_process(delta):
-	if not local:
+	if not Util.is_local(self):
 		if last_pos:
 			body.transform.origin = lerp(body.transform.origin, last_pos, delta * lerp_speed)
 		return
@@ -40,7 +38,7 @@ func _physics_process(delta):
 			bird_physics(delta)
 	
 func _process(_delta):
-	if not local:
+	if not Util.is_local(self):
 		return
 	## Sync member variables
 	rpc_unreliable("sync_movement", velocity, on_ground, jump, body.transform)
@@ -72,6 +70,7 @@ func soldier_physics(delta):
 	var flat_vel = Vector3(velocity.x, 0, velocity.z)
 
 	## Add move vec
+	move_vec.y = 0.0 ## No vertical movement for soldiers
 	if move_vec.length_squared() > 0.25:
 		flat_vel += move_vec * move_accel
 		if flat_vel.length_squared() > max_speed * max_speed:
@@ -99,3 +98,5 @@ func bird_physics(delta):
 		if velocity.length_squared() < 0.25:
 			velocity = Vector3.ZERO
 		velocity = body.move_and_slide(velocity + gravity * delta, Vector3.UP)
+	if body.flight_mode == "hover":
+		body.move_and_slide(move_vec * move_accel, Vector3.UP)

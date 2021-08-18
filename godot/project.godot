@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/MovementController.gd"
 }, {
+"base": "Node",
+"class": "Util",
+"language": "GDScript",
+"path": "res://Scripts/Util.gd"
+}, {
 "base": "Spatial",
 "class": "Weapon",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": "",
 "MovementController": "",
+"Util": "",
 "Weapon": ""
 }
 
@@ -50,6 +56,7 @@ VehicleManager="*res://Scripts/VehicleManager.gd"
 
 [debug]
 
+gdscript/warnings/shadowed_variable=false
 gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
@@ -111,6 +118,16 @@ weapon_3={
 enter-exit={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hover_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hover_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
  ]
 }
 

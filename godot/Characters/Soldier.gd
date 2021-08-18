@@ -11,7 +11,7 @@ var was_falling
 onready var player = get_parent()
 
 func _ready():
-	if not player.local: return
+	if not Util.is_local(self): return
 	$AimTimer.connect("timeout", self, "unaim")
 
 func _process(_delta):
@@ -30,12 +30,12 @@ func _process(_delta):
 		anim_tree["parameters/Landing/active"] = true
 	was_falling = not movement_controller.on_ground
 
-	if player.local:
+	if Util.is_local(self):
 		## Update script variables
 		rpc_unreliable("sync_variables", aiming, was_falling, look_direction)
 
 func _input(event):
-	if not player.local: return
+	if not Util.is_local(self): return
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE and event.pressed and not event.echo:
 			movement_controller.jump = true

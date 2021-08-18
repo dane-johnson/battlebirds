@@ -220,3 +220,6 @@ anims/DeactivateThrusters = SubResource( 10 )
 anims/FanClose = SubResource( 11 )
 anims/FanOpen = SubResource( 12 )
 anims/Takeoff = SubResource( 13 )
+
+[node name="CameraRemote" type="RemoteTransform" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.67785 )
