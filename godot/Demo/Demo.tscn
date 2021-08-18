@@ -7,7 +7,7 @@
 [ext_resource path="res://HeightMaps/data.hterrain" type="Resource" id=5]
 [ext_resource path="res://Materials/raw/ground_dirt_1226_9352_Small.jpg" type="Texture" id=6]
 [ext_resource path="res://Props/SpawnPoint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Characters/Bird.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Props/BirdSpawn.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -83,5 +83,5 @@ transform = Transform( -0.988156, 0, 0.153452, 0, 1, 0, -0.153452, 0, -0.988156,
 [node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource( 7 )]
 transform = Transform( -0.992726, 0, -0.120397, 0, 1, 0, 0.120397, 0, -0.992726, -19.3291, 0, -62.0205 )
 
-[node name="Bird" parent="." instance=ExtResource( 8 )]
+[node name="BirdSpawn" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.597, -31.8111 )

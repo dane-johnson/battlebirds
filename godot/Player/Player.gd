@@ -2,14 +2,18 @@ extends Spatial
 
 const soldier_prefab = preload("res://Characters/Soldier.tscn")
 
+enum {DEAD, SOLDIER, VEHICLE}
+
+var mode = DEAD
+
 onready var camera_rig = $CameraRig
 onready var respawn_timer = $RespawnTimer
 onready var hud = $HUD
 
 var local = true
-var alive = false
 
 var soldier
+var vehicle
 var weapon_manager
 var active_weapon
 var health_manager
@@ -27,14 +31,14 @@ func _ready():
 func _process(_delta):
 	if not local: return
 	## Update HUD
-	if alive:
+	if mode == SOLDIER:
 		hud.update_weapon(active_weapon)
 		hud.update_health(health_manager)
-	else:
+	elif mode == DEAD:
 		hud.update_respawn(int(ceil(respawn_timer.time_left)))
 
 	## Update soldier stuff
-	if not alive: return
+	if not mode == SOLDIER: return
 	## Polling Inputs
 	var move_vec = Vector3.ZERO
 	move_vec.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -59,25 +63,31 @@ func _process(_delta):
 			soldier.look_direction = Basis(Vector3.UP, phi)
 			
 func _input(event):
-	if not local or not alive: return
+	if not local or not mode == SOLDIER: return
 	if event is InputEventMouseMotion:
 		var euler = Vector3(-event.relative.y * camera_rig.vert_sensitivity, -event.relative.x * camera_rig.horiz_sensitivity, 0.0)
 		camera_rig.add_to_tgt(euler)
-	if event is InputEventKey and event.is_pressed() and not event.is_echo():
-		match event.scancode:
-			KEY_1:
-				weapon_manager.rpc("set_active_weapon", 0)
-			KEY_2:
-				weapon_manager.rpc("set_active_weapon", 1)
-			KEY_3:
-				weapon_manager.rpc("set_active_weapon", 2)
-			KEY_R:
-				active_weapon.reload()
-			KEY_P:
-				die()
-				
+		
+func _unhandled_input(event):
+	if not local or not mode == SOLDIER: return
+	if event.is_action_pressed("weapon_1"): weapon_manager.rpc("set_active_weapon", 0)
+	if event.is_action_pressed("weapon_2"): weapon_manager.rpc("set_active_weapon", 1)
+	if event.is_action_pressed("weapon_3"): weapon_manager.rpc("set_active_weapon", 2)
+	if event.is_action_pressed("reload"): active_weapon.reload()
+	if event.is_action_pressed("suicide"): die()
+	if event.is_action_pressed("enter-exit"): try_enter_exit_vehicle()
+
 func on_respawn():
 	PlayerManager.rpc("add_to_spawnlist", NetworkManager.id)
+	
+func try_enter_exit_vehicle():
+	var vehicle = camera_rig.raycast.get_collider()
+	if vehicle:
+		## See if we can get in
+		if VehicleManager.player_can_enter(vehicle):
+			## Enter the vehicle
+			VehicleManager.player_enters(self, vehicle)
+			mode = VEHICLE
 
 remotesync func spawn(spawn_point = Transform()):
 	## Instance soldier
@@ -98,20 +108,18 @@ remotesync func spawn(spawn_point = Transform()):
 	## Setup movement
 	soldier.movement_controller.local = local
 
-
 	hud.change_mode(hud.SOLDIER)
 	if local:
 		soldier.get_node("CameraRemote").remote_path = camera_rig.get_path()
 		weapon_manager.connect("active_weapon_changed", self, "active_weapon_changed")
 		active_weapon_changed(weapon_manager.weapons.get_child(0))
-
-	alive = true
+	mode = SOLDIER
 
 func die():
 	soldier.rpc("die")
-	alive = false
 	respawn_timer.start()
 	hud.change_mode(hud.DEAD)
+	mode = DEAD
 
 func active_weapon_changed(weapon):
 	active_weapon = weapon

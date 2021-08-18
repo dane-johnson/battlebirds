@@ -3,6 +3,7 @@ extends Spatial
 var tgt : Vector3
 
 onready var camera = $Camera
+onready var raycast = $Camera/RayCast
 
 const horiz_sensitivity = 1.0/100.0
 const vert_sensitivity = 1.0/100.0

@@ -25,6 +25,11 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 0.989175, 0.146739, 0, -0.146739, 0.989175, 0, 1.14837, 2.507 )
 far = 1000.0
 
+[node name="RayCast" type="RayCast" parent="CameraRig/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -8 )
+collision_mask = 16
+
 [node name="Listener" type="Listener" parent="CameraRig"]
 
 [node name="HUD" type="Control" parent="."]

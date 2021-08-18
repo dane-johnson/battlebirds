@@ -2,6 +2,8 @@ extends Node
 
 class_name MovementController
 
+enum MovementMode { SOLDIER, BIRD }
+
 export(NodePath) var body_node
 onready var body: KinematicBody = get_node(body_node)
 
@@ -10,6 +12,7 @@ export(float) var jump_power = 10.0
 export(float) var max_speed = 10.0
 
 export(float) var lerp_speed = 30.0
+export(MovementMode) var movement_mode
 
 var local = true
 
@@ -30,8 +33,11 @@ func _physics_process(delta):
 		if last_pos:
 			body.transform.origin = lerp(body.transform.origin, last_pos, delta * lerp_speed)
 		return
-
-	soldier_physics(delta)
+	match movement_mode:
+		MovementMode.SOLDIER:
+			soldier_physics(delta)
+		MovementMode.BIRD:
+			bird_physics(delta)
 	
 func _process(_delta):
 	if not local:
@@ -87,3 +93,9 @@ func soldier_physics(delta):
 	velocity = body.move_and_slide_with_snap(velocity + gravity * delta, snap, Vector3.UP, true)
 
 	on_ground = body.is_on_floor()
+
+func bird_physics(delta):
+	if body.flight_mode == "empty":
+		if velocity.length_squared() < 0.25:
+			velocity = Vector3.ZERO
+		velocity = body.move_and_slide(velocity + gravity * delta, Vector3.UP)
