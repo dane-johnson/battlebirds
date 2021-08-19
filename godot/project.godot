@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/MovementController.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": "Util",
 "language": "GDScript",
 "path": "res://Scripts/Util.gd"

@@ -64,6 +64,13 @@ func _process(_delta):
 				## Look in the direction of vel
 				var phi = atan2(-vel.x, -vel.z)
 				soldier.look_direction = Basis(Vector3.UP, phi)
+	elif mode == VEHICLE:
+		if Input.is_action_just_pressed("fire"):
+			vehicle.start_aiming()
+		if Input.is_action_just_released("fire"):
+			vehicle.stop_aiming()
+		if vehicle.aiming:
+			vehicle.look_direction = camera_rig.transform.basis
 
 func _input(event):
 	if not Util.is_local(self): return
@@ -72,25 +79,32 @@ func _input(event):
 		camera_rig.add_to_tgt(euler)
 		
 func _unhandled_input(event):
-	if not Util.is_local(self) or not mode == SOLDIER: return
-	if event.is_action_pressed("weapon_1"): weapon_manager.rpc("set_active_weapon", 0)
-	if event.is_action_pressed("weapon_2"): weapon_manager.rpc("set_active_weapon", 1)
-	if event.is_action_pressed("weapon_3"): weapon_manager.rpc("set_active_weapon", 2)
-	if event.is_action_pressed("reload"): active_weapon.reload()
-	if event.is_action_pressed("suicide"): die()
+	if not Util.is_local(self): return
 	if event.is_action_pressed("enter-exit"): try_enter_exit_vehicle()
+	if mode == SOLDIER:
+		if event.is_action_pressed("weapon_1"): weapon_manager.rpc("set_active_weapon", 0)
+		if event.is_action_pressed("weapon_2"): weapon_manager.rpc("set_active_weapon", 1)
+		if event.is_action_pressed("weapon_3"): weapon_manager.rpc("set_active_weapon", 2)
+		if event.is_action_pressed("reload"): active_weapon.reload()
+		if event.is_action_pressed("suicide"): die()
+
 
 func on_respawn():
 	PlayerManager.rpc("add_to_spawnlist", NetworkManager.id)
 	
 func try_enter_exit_vehicle():
-	var vehicle = camera_rig.raycast.get_collider()
-	if vehicle:
-		## See if we can get in
-		if VehicleManager.player_can_enter(vehicle):
-			## Enter the vehicle
-			VehicleManager.rpc("player_enters", name, vehicle.name)
-			rpc("enter_vehicle", vehicle.name)
+	if mode == SOLDIER:
+		var vehicle = camera_rig.raycast.get_collider()
+		if vehicle:
+			## See if we can get in
+			if VehicleManager.player_can_enter(vehicle):
+				## Enter the vehicle
+				VehicleManager.rpc("player_enters", name, vehicle.name)
+				rpc("enter_vehicle", vehicle.name)
+	elif mode == VEHICLE:
+		VehicleManager.rpc("player_exits", name, vehicle.name)
+		rpc("exit_vehicle", vehicle.name)
+				
 			
 remotesync func enter_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
@@ -102,7 +116,21 @@ remotesync func enter_vehicle(vehicle_name):
 	if Util.is_local(self):
 		soldier.get_node("CameraRemote").remote_path = ""
 		vehicle.get_node("CameraRemote").remote_path = camera_rig.get_path()
+		camera_rig.snap_to(vehicle.transform.basis)
 		camera_rig.camera.transform = camera_rig.get_node("Far").transform
+
+remotesync func exit_vehicle(vehicle_name):
+	var vehicle = VehicleManager.get_node(vehicle_name)
+	mode = SOLDIER
+	add_child(soldier)
+	soldier.show()
+	self.vehicle = null
+	movement_controller = soldier.movement_controller
+	if Util.is_local(self):
+		vehicle.get_node("CameraRemote").remote_path = ""
+		soldier.get_node("CameraRemote").remote_path = camera_rig.get_path()
+		camera_rig.camera.transform = camera_rig.get_node("Near").transform
+		soldier.transform = vehicle.transform.translated(Vector3.UP * 2.0)
 	
 
 remotesync func spawn(spawn_point = Transform()):

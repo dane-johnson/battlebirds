@@ -15,8 +15,7 @@ func _ready():
 	$AimTimer.connect("timeout", self, "unaim")
 
 func _process(_delta):
-	
-	transform.basis = look_direction
+	transform.basis = Util.level(look_direction)
 
 	## Animation updates
 	var rel_velocity = transform.basis.xform_inv(movement_controller.velocity)

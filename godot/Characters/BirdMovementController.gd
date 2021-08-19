@@ -16,4 +16,3 @@ remote func sync_movement(transform):
 	if not last_pos:
 		body.transform.origin = transform.origin
 	last_pos = transform.origin
-	

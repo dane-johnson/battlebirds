@@ -24,7 +24,7 @@ func run_physics(delta):
 	var flat_vel = Vector3(velocity.x, 0, velocity.z)
 
 	## Add move vec
-	move_vec.y = 0.0 ## No vertical movement for soldiers
+	move_vec = Util.flat_vector(move_vec)
 	if move_vec.length_squared() > 0.25:
 		flat_vel += move_vec * move_accel
 		if flat_vel.length_squared() > max_speed * max_speed:
