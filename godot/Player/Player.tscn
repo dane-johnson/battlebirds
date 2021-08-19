@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://UI/raw/crosshairs.png" type="Texture" id=2]
+[ext_resource path="res://Effects/error.wav" type="AudioStream" id=3]
 [ext_resource path="res://Camera/CameraRig.gd" type="Script" id=4]
 [ext_resource path="res://Player/HUD.gd" type="Script" id=5]
 [ext_resource path="res://UI/raw/CommanderEdge-P587.ttf" type="DynamicFontData" id=6]
@@ -102,3 +103,8 @@ transform = Transform( 1, 0, 0, 0, 0.989175, 0.146739, 0, -0.146739, 0.989175, 0
 
 [node name="Far" type="Spatial" parent="CameraRig"]
 transform = Transform( 1, 0, 0, 0, 0.939472, 0.342627, 0, -0.342627, 0.939472, 0, 10.5787, 17.6653 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Error" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 3 )

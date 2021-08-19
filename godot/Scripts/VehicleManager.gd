@@ -4,6 +4,8 @@ extends Spatial
 ## It animates and controls vehicles that are not occupied
 
 func player_can_enter(vehicle):
+	if vehicle.exploded:
+		return false
 	for occupant in vehicle.seats.values():
 		if !occupant:
 			return true

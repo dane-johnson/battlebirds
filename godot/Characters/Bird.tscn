@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Characters/raw/bird/Steel.material" type="Material" id=1]
 [ext_resource path="res://Characters/Bird.gd" type="Script" id=2]
 [ext_resource path="res://Characters/BirdMovementController.gd" type="Script" id=3]
 [ext_resource path="res://Characters/raw/bird/Plane.material" type="Material" id=4]
+[ext_resource path="res://Scripts/HealthManager.gd" type="Script" id=5]
+[ext_resource path="res://Effects/fire_01.png" type="Texture" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Plane"
@@ -166,6 +168,32 @@ tracks/1/keys = {
 "values": [ 1.0, 0.991981, 0.969092, 0.933081, 0.885698, 0.828692, 0.763814, 0.692812, 0.617437, 0.539437, 0.460563, 0.382563, 0.307188, 0.236186, 0.171308, 0.114302, 0.0669192, 0.0309082, 0.00801861, 0.0 ]
 }
 
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 2
+emission_box_extents = Vector3( 7, 1, 5 )
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 1.47
+angular_velocity = 50.23
+angular_velocity_random = 1.0
+scale = 3.31
+color = Color( 1, 0, 0, 0.560784 )
+hue_variation = 0.09
+hue_variation_random = 0.44
+
+[sub_resource type="SpatialMaterial" id=15]
+flags_transparent = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="QuadMesh" id=16]
+material = SubResource( 15 )
+
 [node name="Bird" type="KinematicBody"]
 collision_layer = 18
 collision_mask = 11
@@ -222,3 +250,21 @@ anims/Takeoff = SubResource( 13 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.67785 )
 update_rotation = false
 update_scale = false
+
+[node name="HealthManager" type="Node" parent="."]
+script = ExtResource( 5 )
+max_health = 500
+
+[node name="CenterOfMass" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35905, 0 )
+
+[node name="Fire" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.51702 )
+emitting = false
+amount = 70
+lifetime = 5.0
+preprocess = 2.0
+explosiveness = 0.12
+randomness = 1.0
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 16 )

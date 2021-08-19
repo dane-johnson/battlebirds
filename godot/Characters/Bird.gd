@@ -1,6 +1,7 @@
 extends KinematicBody
 
 onready var movement_controller = $MovementController
+onready var health_manager = $HealthManager
 onready var spawn_transform = global_transform
 onready var look_direction = spawn_transform.basis
 
@@ -8,8 +9,10 @@ var flight_mode = "empty"
 var seats = {"pilot": null}
 
 var aiming = false
+var exploded = false
 
 func _ready():
+	health_manager.connect("dead", self, "on_dead")
 	## Change parent to the vehicle manager
 	call_deferred("reparent_to_vehicle_manager")
 	## This is nice, we can just place them in the map
@@ -57,3 +60,10 @@ func toggle_flight_mode():
 remote func sync_variables(aiming, look_direction):
 	self.aiming = aiming
 	self.look_direction = look_direction
+	
+func on_dead():
+	rpc("die")
+	
+remotesync func die():
+	exploded = true
+	$Fire.emitting = true

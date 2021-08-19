@@ -30,10 +30,10 @@ func _ready():
 func _process(_delta):
 	if not Util.is_local(self): return
 	## Update HUD
-	if mode == SOLDIER:
+	if mode != DEAD:
 		hud.update_weapon(active_weapon)
 		hud.update_health(health_manager)
-	elif mode == DEAD:
+	else:
 		hud.update_respawn(int(ceil(respawn_timer.time_left)))
 
 	## Update movement
@@ -105,6 +105,8 @@ func try_enter_exit_vehicle():
 				## Enter the vehicle
 				VehicleManager.rpc("player_enters", name, vehicle.name)
 				rpc("enter_vehicle", vehicle.name)
+			else:
+				$Sounds/Error.play()
 	elif mode == VEHICLE:
 		VehicleManager.rpc("player_exits", name, vehicle.name)
 		rpc("exit_vehicle", vehicle.name)
@@ -122,6 +124,8 @@ remotesync func enter_vehicle(vehicle_name):
 		vehicle.get_node("CameraRemote").remote_path = camera_rig.get_path()
 		camera_rig.snap_to(vehicle.transform.basis)
 		camera_rig.camera.transform = camera_rig.get_node("Far").transform
+		health_manager = vehicle.health_manager
+		health_manager.connect("dead", self, "on_vehicle_exploded")
 
 remotesync func exit_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
@@ -135,7 +139,13 @@ remotesync func exit_vehicle(vehicle_name):
 		soldier.get_node("CameraRemote").remote_path = camera_rig.get_path()
 		camera_rig.camera.transform = camera_rig.get_node("Near").transform
 		soldier.transform = vehicle.transform.translated(Vector3.UP * 2.0)
-	
+		health_manager.disconnect("dead", self, "on_vehicle_exploded")
+		health_manager = soldier.health_manager
+
+func on_vehicle_exploded():
+	VehicleManager.rpc("player_exits", name, vehicle.name)
+	rpc("exit_vehicle", vehicle.name)
+	die()
 
 remotesync func spawn(spawn_point = Transform()):
 	## Instance soldier
