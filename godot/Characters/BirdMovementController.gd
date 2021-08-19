@@ -2,8 +2,10 @@ extends MovementController
 
 func run_physics(delta):
 	if body.flight_mode == "empty":
-		if velocity.length_squared() < 0.25:
-			velocity = Vector3.ZERO
+		var flat_vel = Vector3(velocity.x, 0, velocity.y)
+		if flat_vel.length_squared() < 0.25:
+			velocity.x = 0
+			velocity.z = 0
 		velocity = body.move_and_slide(velocity + gravity * delta, Vector3.UP)
 	if body.flight_mode == "hover":
 		body.move_and_slide(move_vec * move_accel, Vector3.UP)
