@@ -88,6 +88,7 @@ script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="CameraRig"]
 transform = Transform( 1, 0, 0, 0, 0.989175, 0.146739, 0, -0.146739, 0.989175, 0, 1.14837, 2.507 )
+current = true
 far = 1000.0
 
 [node name="RayCast" type="RayCast" parent="CameraRig/Camera"]

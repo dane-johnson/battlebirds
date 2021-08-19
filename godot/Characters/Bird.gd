@@ -13,6 +13,7 @@ var exploded = false
 
 func _ready():
 	health_manager.connect("dead", self, "on_dead")
+	$RespawnTimer.connect("timeout", self, "on_respawn")
 	## Change parent to the vehicle manager
 	call_deferred("reparent_to_vehicle_manager")
 	## This is nice, we can just place them in the map
@@ -61,9 +62,18 @@ remote func sync_variables(aiming, look_direction):
 	self.aiming = aiming
 	self.look_direction = look_direction
 	
+func on_respawn():
+	exploded = false
+	$Fire.emitting = false
+	$Fire.hide()
+	transform = spawn_transform
+	health_manager.revive()
+	
 func on_dead():
 	rpc("die")
 	
 remotesync func die():
 	exploded = true
 	$Fire.emitting = true
+	$Fire.show()
+	$RespawnTimer.start()

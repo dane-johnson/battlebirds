@@ -18,3 +18,6 @@ remotesync func hurt(dmg):
 		emit_signal("dead")
 	else:
 		current_health -= dmg
+
+func revive():
+	current_health = max_health
