@@ -69,7 +69,9 @@ func _process(_delta):
 			vehicle.start_aiming()
 		if Input.is_action_just_released("fire"):
 			vehicle.stop_aiming()
-		if vehicle.aiming:
+		if vehicle.flight_mode == "hover" and vehicle.aiming:
+			vehicle.look_direction = camera_rig.transform.basis
+		if vehicle.flight_mode == "jet":
 			vehicle.look_direction = camera_rig.transform.basis
 
 func _input(event):
@@ -87,6 +89,8 @@ func _unhandled_input(event):
 		if event.is_action_pressed("weapon_3"): weapon_manager.rpc("set_active_weapon", 2)
 		if event.is_action_pressed("reload"): active_weapon.reload()
 		if event.is_action_pressed("suicide"): die()
+	if mode == VEHICLE:
+		if event.is_action_pressed("toggle_mode"): vehicle.toggle_flight_mode()
 
 
 func on_respawn():

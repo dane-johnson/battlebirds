@@ -1,5 +1,7 @@
 extends MovementController
 
+var jet_speed = 100.0
+
 func run_physics(delta):
 	if body.flight_mode == "empty":
 		var flat_vel = Vector3(velocity.x, 0, velocity.y)
@@ -9,6 +11,8 @@ func run_physics(delta):
 		velocity = body.move_and_slide(velocity + gravity * delta, Vector3.UP)
 	if body.flight_mode == "hover":
 		body.move_and_slide(move_vec * move_accel, Vector3.UP)
+	if body.flight_mode == "jet":
+		body.move_and_slide(-body.transform.basis.z * jet_speed, Vector3.UP)
 
 func do_sync():
 	rpc_unreliable("sync_movement", body.transform)

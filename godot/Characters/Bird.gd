@@ -2,12 +2,12 @@ extends KinematicBody
 
 onready var movement_controller = $MovementController
 onready var spawn_transform = global_transform
+onready var look_direction = spawn_transform.basis
 
 var flight_mode = "empty"
 var seats = {"pilot": null}
 
 var aiming = false
-var look_direction = transform.basis
 
 func _ready():
 	## Change parent to the vehicle manager
@@ -16,7 +16,10 @@ func _ready():
 	## No need for an extra node to track spawns
 
 func _process(delta):
-	transform.basis = Util.level(look_direction)
+	if flight_mode == "jet":
+		transform.basis = look_direction
+	else:
+		transform.basis = Util.level(look_direction)
 	if Util.is_local(self):
 		rpc_unreliable("sync_variables", aiming, look_direction)
 
@@ -25,10 +28,10 @@ func reparent_to_vehicle_manager():
 	VehicleManager.add_child(self)
 	global_transform = spawn_transform
 
-func takeoff():
+remotesync func takeoff():
 	$AnimationPlayer.play("Takeoff")
 	
-func land():
+remotesync func land():
 	$AnimationPlayer.play_backwards("Takeoff")
 
 func enter():
@@ -42,7 +45,15 @@ func start_aiming():
 
 func stop_aiming():
 	aiming = false
-
+	
+func toggle_flight_mode():
+	if flight_mode == "hover":
+		rpc("takeoff")
+		flight_mode = "jet"
+	elif flight_mode == "jet":
+		rpc("land")
+		flight_mode = "hover"
+		
 remote func sync_variables(aiming, look_direction):
 	self.aiming = aiming
 	self.look_direction = look_direction
