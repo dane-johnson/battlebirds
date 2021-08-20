@@ -24,7 +24,7 @@ func reload():
 		reloading = true
 		$ReloadTimer.start()
 		$ReloadSound.play()
-	
+
 func unfire():
 	$AnimationPlayer.stop()
 	$muzzleflash.hide()

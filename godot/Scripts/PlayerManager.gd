@@ -16,10 +16,10 @@ func _process(_delta):
 		spawn_id(safe_spawn, peer_id)
 
 func get_player_by_name(name):
-	return NetworkManager.get_node(name)
+	return get_node(name)
 
 func get_player(peer_id):
-	return NetworkManager.get_node("Player-" + str(peer_id))
+	return get_node("Player-" + str(peer_id))
 
 func spawn_id(spawn_point, peer_id):
 	get_player(peer_id).rpc("spawn", spawn_point)

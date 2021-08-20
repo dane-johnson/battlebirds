@@ -43,7 +43,7 @@ func update_respawn(time_left):
 		respawn_timer.text = "Waiting for a safe spawn..."
 	else:
 		respawn_timer.text = "Respawn\n%d" % time_left
-	
+
 func update_health(health_manager):
 	health_counter.text = "Health: %d/%d" % [health_manager.current_health, health_manager.max_health]
 

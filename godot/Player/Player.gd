@@ -69,7 +69,7 @@ func _process(_delta):
 			weapon_manager.rpc("fire")
 			vehicle.start_aiming()
 		if Input.is_action_just_released("fire"):
-			weapon_manager.rpc("unfire")			
+			weapon_manager.rpc("unfire")
 			vehicle.stop_aiming()
 		if vehicle.flight_mode == "hover" and vehicle.aiming:
 			vehicle.look_direction = camera_rig.transform.basis
@@ -81,7 +81,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var euler = Vector3(-event.relative.y * camera_rig.vert_sensitivity, -event.relative.x * camera_rig.horiz_sensitivity, 0.0)
 		camera_rig.add_to_tgt(euler)
-		
+
 func _unhandled_input(event):
 	if not Util.is_local(self): return
 	if event.is_action_pressed("enter-exit"): try_enter_exit_vehicle()
@@ -97,7 +97,7 @@ func _unhandled_input(event):
 
 func on_respawn():
 	PlayerManager.rpc("add_to_spawnlist", NetworkManager.id)
-	
+
 func try_enter_exit_vehicle():
 	if mode == SOLDIER:
 		var vehicle = camera_rig.raycast.get_collider()
@@ -112,8 +112,8 @@ func try_enter_exit_vehicle():
 	elif mode == VEHICLE:
 		VehicleManager.rpc("player_exits", name, vehicle.name)
 		rpc("exit_vehicle", vehicle.name)
-				
-			
+
+
 remotesync func enter_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
 	mode = VEHICLE

@@ -35,7 +35,7 @@ func reparent_to_vehicle_manager():
 
 remotesync func takeoff():
 	$AnimationPlayer.play("Takeoff")
-	
+
 remotesync func land():
 	$AnimationPlayer.play_backwards("Takeoff")
 
@@ -50,7 +50,7 @@ func start_aiming():
 
 func stop_aiming():
 	aiming = false
-	
+
 func toggle_flight_mode():
 	if flight_mode == "hover":
 		rpc("takeoff")
@@ -58,21 +58,21 @@ func toggle_flight_mode():
 	elif flight_mode == "jet":
 		rpc("land")
 		rset("flight_mode", "hover")
-		
+
 puppet func sync_variables(aiming, look_direction):
 	self.aiming = aiming
 	self.look_direction = look_direction
-	
+
 func on_respawn():
 	exploded = false
 	$Fire.emitting = false
 	$Fire.hide()
 	transform = spawn_transform
 	health_manager.revive()
-	
+
 func on_dead():
 	rpc("die")
-	
+
 remotesync func die():
 	exploded = true
 	$Fire.emitting = true

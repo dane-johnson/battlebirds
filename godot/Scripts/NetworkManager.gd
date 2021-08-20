@@ -25,11 +25,11 @@ func init_remote_player(peer_id):
 	## Give the remote player control of their player objects
 	## (Maybe not a great idea, fix this if I ever become famous)
 	remote_player.set_network_master(peer_id)
-	add_child(remote_player)
+	PlayerManager.add_child(remote_player)
 	rpc_id(peer_id, "sync_player", local_player.name, local_player.mode)
 
 remote func sync_player(name, mode):
-	var remote_player = get_node(name)
+	var remote_player = PlayerManager.get_player_by_name(name)
 	if mode == remote_player.SOLDIER:
 		remote_player.spawn()
 
@@ -42,7 +42,7 @@ func init_local_player():
 	local_player = player_prefab.instance()
 	setup_player(local_player, id, true)
 	local_player.set_network_master(id)
-	add_child(local_player)
+	PlayerManager.add_child(local_player)
 
 func host_game():
 	peer = NetworkedMultiplayerENet.new()

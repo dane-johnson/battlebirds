@@ -44,7 +44,7 @@ func on_weapon_fired(damage, spread_angle):
 
 func on_weapon_fired_projectile(projectile_name):
 	projectiles.append(projectile_name)
-	
+
 func _physics_process(_delta):
 	if not is_network_master() or not camera_rig:
 		return

@@ -27,7 +27,7 @@ func _ready():
 func fire():
 	## All weapons should implement `fire' (right?)
 	push_error(self.name + " does not implement `fire()`!")
-	
+
 func unfire():
 	pass
 
