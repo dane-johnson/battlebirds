@@ -4,15 +4,16 @@ onready var movement_controller = $MovementController
 onready var health_manager = $HealthManager
 onready var weapon_manager = $WeaponManager
 onready var spawn_transform = global_transform
-onready var look_direction = spawn_transform.basis
 
+remotesync var look_direction
 remotesync var flight_mode = "empty"
 var seats = {"pilot": null}
 
-var aiming = false
+remotesync var aiming = false
 var exploded = false
 
 func _ready():
+	look_direction = spawn_transform.basis
 	health_manager.connect("dead", self, "on_dead")
 	$RespawnTimer.connect("timeout", self, "on_respawn")
 	## Change parent to the vehicle manager
@@ -25,8 +26,6 @@ func _process(delta):
 		transform.basis = look_direction
 	else:
 		transform.basis = Util.level(look_direction)
-	if Util.is_local(self):
-		rpc_unreliable("sync_variables", aiming, look_direction)
 
 func reparent_to_vehicle_manager():
 	get_parent().remove_child(self)
@@ -46,10 +45,10 @@ func exit():
 	rset("flight_mode", "empty")
 
 func start_aiming():
-	aiming = true
+	rset("aiming", true)
 
 func stop_aiming():
-	aiming = false
+	rset("aiming", false)
 
 func toggle_flight_mode():
 	if flight_mode == "hover":
@@ -58,10 +57,6 @@ func toggle_flight_mode():
 	elif flight_mode == "jet":
 		rpc("land")
 		rset("flight_mode", "hover")
-
-puppet func sync_variables(aiming, look_direction):
-	self.aiming = aiming
-	self.look_direction = look_direction
 
 func on_respawn():
 	exploded = false

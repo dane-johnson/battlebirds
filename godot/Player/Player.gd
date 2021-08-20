@@ -72,9 +72,9 @@ func _process(_delta):
 			weapon_manager.rpc("unfire")
 			vehicle.stop_aiming()
 		if vehicle.flight_mode == "hover" and vehicle.aiming:
-			vehicle.look_direction = camera_rig.transform.basis
+			vehicle.rset_unreliable("look_direction", camera_rig.transform.basis)
 		if vehicle.flight_mode == "jet":
-			vehicle.look_direction = camera_rig.transform.basis
+			vehicle.rset_unreliable("look_direction", camera_rig.transform.basis)
 
 func _input(event):
 	if not Util.is_local(self): return
