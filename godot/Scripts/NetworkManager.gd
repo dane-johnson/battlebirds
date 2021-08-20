@@ -15,7 +15,7 @@ func _ready():
 	get_tree().connect("network_peer_connected", self, "init_remote_player")
 	get_tree().connect("network_peer_disconnected", self, "delete_remote_player")
 	get_tree().connect("server_disconnected", self, "shutdown_game")
-	
+
 func is_local(node):
 	return node.is_network_master()
 
@@ -63,6 +63,6 @@ func join_game(ip):
 
 func shutdown_game():
 	get_tree().quit()
-	
+
 static func setup_player(player, peer_id, local):
 	player.set_name("Player-" + str(peer_id)) ## Must use naming convention for network sync
