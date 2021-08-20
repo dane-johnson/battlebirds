@@ -321,5 +321,5 @@ process_material = SubResource( 19 )
 draw_pass_1 = SubResource( 21 )
 
 [node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 one_shot = true
