@@ -2,10 +2,11 @@ extends KinematicBody
 
 onready var movement_controller = $MovementController
 onready var health_manager = $HealthManager
+onready var weapon_manager = $WeaponManager
 onready var spawn_transform = global_transform
 onready var look_direction = spawn_transform.basis
 
-var flight_mode = "empty"
+remotesync var flight_mode = "empty"
 var seats = {"pilot": null}
 
 var aiming = false
@@ -25,7 +26,7 @@ func _process(delta):
 	else:
 		transform.basis = Util.level(look_direction)
 	if Util.is_local(self):
-		rpc_unreliable("sync_variables", aiming, look_direction, flight_mode)
+		rpc_unreliable("sync_variables", aiming, look_direction)
 
 func reparent_to_vehicle_manager():
 	get_parent().remove_child(self)
@@ -39,10 +40,10 @@ remotesync func land():
 	$AnimationPlayer.play_backwards("Takeoff")
 
 func enter():
-	flight_mode = "hover"
+	rset("flight_mode", "hover")
 
 func exit():
-	flight_mode = "empty"
+	rset("flight_mode", "empty")
 
 func start_aiming():
 	aiming = true
@@ -53,15 +54,14 @@ func stop_aiming():
 func toggle_flight_mode():
 	if flight_mode == "hover":
 		rpc("takeoff")
-		flight_mode = "jet"
+		rset("flight_mode", "jet")
 	elif flight_mode == "jet":
 		rpc("land")
-		flight_mode = "hover"
+		rset("flight_mode", "hover")
 		
-remote func sync_variables(aiming, look_direction, flight_mode):
+puppet func sync_variables(aiming, look_direction):
 	self.aiming = aiming
 	self.look_direction = look_direction
-	self.flight_mode = flight_mode
 	
 func on_respawn():
 	exploded = false

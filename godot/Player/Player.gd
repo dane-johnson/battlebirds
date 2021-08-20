@@ -66,8 +66,10 @@ func _process(_delta):
 				soldier.look_direction = Basis(Vector3.UP, phi)
 	elif mode == VEHICLE:
 		if Input.is_action_just_pressed("fire"):
+			weapon_manager.rpc("fire")
 			vehicle.start_aiming()
 		if Input.is_action_just_released("fire"):
+			weapon_manager.rpc("unfire")			
 			vehicle.stop_aiming()
 		if vehicle.flight_mode == "hover" and vehicle.aiming:
 			vehicle.look_direction = camera_rig.transform.basis
@@ -126,6 +128,9 @@ remotesync func enter_vehicle(vehicle_name):
 		camera_rig.camera.transform = camera_rig.get_node("Far").transform
 		health_manager = vehicle.health_manager
 		health_manager.connect("dead", self, "on_vehicle_exploded")
+		weapon_manager = vehicle.weapon_manager
+		weapon_manager.camera_rig = camera_rig
+		active_weapon_changed(weapon_manager.weapons.get_child(weapon_manager.active_weapon))
 
 remotesync func exit_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
@@ -141,6 +146,8 @@ remotesync func exit_vehicle(vehicle_name):
 		soldier.transform = vehicle.transform.translated(Vector3.UP * 2.0)
 		health_manager.disconnect("dead", self, "on_vehicle_exploded")
 		health_manager = soldier.health_manager
+		weapon_manager = soldier.weapon_manager
+		active_weapon_changed(weapon_manager.weapons.get_child(weapon_manager.active_weapon))
 
 func on_vehicle_exploded():
 	VehicleManager.rpc("player_exits", name, vehicle.name)

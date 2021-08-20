@@ -6,7 +6,7 @@
 [ext_resource path="res://Characters/Soldier.gd" type="Script" id=4]
 [ext_resource path="res://Characters/raw/strafe_left_loop.anim" type="Animation" id=5]
 [ext_resource path="res://Characters/raw/strafe_right_loop.anim" type="Animation" id=6]
-[ext_resource path="res://Weapons/WeaponManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Weapons/SoldierWeaponManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/raw/aim_gun.anim" type="Animation" id=8]
 [ext_resource path="res://Scripts/HealthManager.gd" type="Script" id=9]
 

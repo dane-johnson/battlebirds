@@ -20,6 +20,7 @@ remotesync func player_enters(player_name, vehicle_name):
 	vehicle.enter()
 	vehicle.set_network_master(player.get_network_master())
 
+
 remotesync func player_exits(player_name, vehicle_name):
 	var player = PlayerManager.get_player_by_name(player_name)
 	var vehicle = get_node(vehicle_name)
@@ -27,6 +28,5 @@ remotesync func player_exits(player_name, vehicle_name):
 		if vehicle.seats[seat] == player:
 			vehicle.seats[seat] = null
 			break
-	vehicle.exit()
 	vehicle.set_network_master(get_network_master()) ## Should be 1
-		
+	vehicle.exit()

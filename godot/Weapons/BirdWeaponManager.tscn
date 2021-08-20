@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/WeaponManager.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Cannon.gd" type="Script" id=2]
+[ext_resource path="res://Effects/shoot.wav" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Firing"
+length = 0.2
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "signal_fired"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="WeaponManager" type="Spatial"]
+script = ExtResource( 1 )
+out_front = 27.0
+
+[node name="Weapons" type="Spatial" parent="."]
+
+[node name="Cannon" type="Spatial" parent="Weapons"]
+script = ExtResource( 2 )
+damage = 15.0
+spread_angle = 0.091
+unlimited_ammo = true
+shots_per_clip = 30
+crosshair_frame = 139
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapons/Cannon"]
+anims/Firing = SubResource( 1 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weapons/Cannon"]
+stream = ExtResource( 3 )

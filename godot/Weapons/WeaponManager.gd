@@ -8,6 +8,8 @@ const projectile_names = {
 	"rocket": preload("res://Weapons/Rocket.tscn")
 }
 
+export(float) var out_front = 3.0
+
 var active_weapon = 0
 
 onready var weapons = $Weapons
@@ -44,10 +46,10 @@ func on_weapon_fired_projectile(projectile_name):
 	projectiles.append(projectile_name)
 	
 func _physics_process(_delta):
-	if not is_network_master():
+	if not is_network_master() or not camera_rig:
 		return
 	var camera = camera_rig.camera.global_transform
-	var src = camera.origin - camera.basis.z * 3.0 ## Go out in front of the camera and player
+	var src = camera.origin - camera.basis.z * out_front ## Go out in front of the camera and player
 	## Fire projectile weapons
 	for projectile_name in projectiles:
 		var projectile_transform = Transform()
