@@ -25,7 +25,7 @@ func _process(delta):
 	else:
 		transform.basis = Util.level(look_direction)
 	if Util.is_local(self):
-		rpc_unreliable("sync_variables", aiming, look_direction)
+		rpc_unreliable("sync_variables", aiming, look_direction, flight_mode)
 
 func reparent_to_vehicle_manager():
 	get_parent().remove_child(self)
@@ -58,9 +58,10 @@ func toggle_flight_mode():
 		rpc("land")
 		flight_mode = "hover"
 		
-remote func sync_variables(aiming, look_direction):
+remote func sync_variables(aiming, look_direction, flight_mode):
 	self.aiming = aiming
 	self.look_direction = look_direction
+	self.flight_mode = flight_mode
 	
 func on_respawn():
 	exploded = false
