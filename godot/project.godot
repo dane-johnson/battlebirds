@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/MovementController.gd"
 }, {
+"base": "Node",
+"class": "PIDController",
+"language": "GDScript",
+"path": "res://Scripts/PIDController.gd"
+}, {
 "base": "Object",
 "class": "Util",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": "",
 "MovementController": "",
+"PIDController": "",
 "Util": "",
 "Weapon": ""
 }
@@ -151,6 +157,7 @@ common/enable_pause_aware_picking=true
 3d/godot_physics/use_bvh=false
 3d/default_gravity=20.0
 3d/default_linear_damp=5.0
+3d/default_angular_damp=0.2
 
 [rendering]
 

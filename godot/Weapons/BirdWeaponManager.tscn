@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://Weapons/Cannon.gd" type="Script" id=2]
 [ext_resource path="res://Effects/shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Effects/reload.wav" type="AudioStream" id=4]
+[ext_resource path="res://Weapons/Muzzleflash.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Firing"
@@ -39,6 +40,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MuzzleFlashes:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.01, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="WeaponManager" type="Spatial"]
 script = ExtResource( 1 )
@@ -66,3 +79,18 @@ stream = ExtResource( 4 )
 [node name="ReloadTimer" type="Timer" parent="Weapons/Cannon"]
 wait_time = 3.0
 one_shot = true
+
+[node name="MuzzleFlashes" type="Spatial" parent="Weapons/Cannon"]
+visible = false
+
+[node name="muzzleflash" parent="Weapons/Cannon/MuzzleFlashes" instance=ExtResource( 5 )]
+transform = Transform( -4.43373, 0, -3.87609e-07, 0, 4.43373, 0, 3.87609e-07, 0, -4.43373, 1.96474, -1.10327, -1.43252 )
+
+[node name="muzzleflash4" parent="Weapons/Cannon/MuzzleFlashes" instance=ExtResource( 5 )]
+transform = Transform( -4.43373, 0, -3.87609e-07, 0, 4.43373, 0, 3.87609e-07, 0, -4.43373, -1.94791, -1.10327, -1.43252 )
+
+[node name="muzzleflash2" parent="Weapons/Cannon/MuzzleFlashes" instance=ExtResource( 5 )]
+transform = Transform( -4.43373, 0, -3.87609e-07, 0, 4.43373, 0, 3.87609e-07, 0, -4.43373, 4.87518, -1.10327, -1.43252 )
+
+[node name="muzzleflash3" parent="Weapons/Cannon/MuzzleFlashes" instance=ExtResource( 5 )]
+transform = Transform( -4.43373, 0, -3.87609e-07, 0, 4.43373, 0, 3.87609e-07, 0, -4.43373, -4.9059, -1.10327, -1.43252 )

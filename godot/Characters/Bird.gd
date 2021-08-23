@@ -1,11 +1,10 @@
-extends KinematicBody
+extends RigidBody
 
 onready var movement_controller = $MovementController
 onready var health_manager = $HealthManager
 onready var weapon_manager = $WeaponManager
 onready var spawn_transform = global_transform
 
-remotesync var look_direction
 remotesync var flight_mode = "empty"
 var seats = {"pilot": null}
 
@@ -13,19 +12,12 @@ remotesync var aiming = false
 var exploded = false
 
 func _ready():
-	look_direction = spawn_transform.basis
 	health_manager.connect("dead", self, "on_dead")
 	$RespawnTimer.connect("timeout", self, "on_respawn")
 	## Change parent to the vehicle manager
 	call_deferred("reparent_to_vehicle_manager")
 	## This is nice, we can just place them in the map
 	## No need for an extra node to track spawns
-
-func _process(delta):
-	if flight_mode == "jet":
-		transform.basis = look_direction
-	else:
-		transform.basis = Util.level(look_direction)
 
 func reparent_to_vehicle_manager():
 	get_parent().remove_child(self)
@@ -39,10 +31,25 @@ remotesync func land():
 	$AnimationPlayer.play_backwards("Takeoff")
 
 func enter():
+	switch_mode("hover")
 	rset("flight_mode", "hover")
 
 func exit():
+	switch_mode("empty")
 	rset("flight_mode", "empty")
+	gravity_scale = 1
+
+func switch_mode(new_mode):
+	rset("flight_mode", new_mode)
+	match new_mode:
+		"empty":
+			gravity_scale = 1.0
+		"hover":
+			rpc("land")
+			gravity_scale = 0.0
+		"jet":
+			rpc("takeoff")
+			gravity_scale = 0.0
 
 func start_aiming():
 	rset("aiming", true)
@@ -52,11 +59,9 @@ func stop_aiming():
 
 func toggle_flight_mode():
 	if flight_mode == "hover":
-		rpc("takeoff")
-		rset("flight_mode", "jet")
+		switch_mode("jet")
 	elif flight_mode == "jet":
-		rpc("land")
-		rset("flight_mode", "hover")
+		switch_mode("hover")
 
 func on_respawn():
 	exploded = false

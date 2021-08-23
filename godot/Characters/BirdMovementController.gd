@@ -1,18 +1,50 @@
 extends MovementController
 
-var jet_speed = 100.0
+const jet_speed = 300.0
+
+remotesync var look_direction
+
+func _ready():
+	._ready()
+	look_direction = body.global_transform.basis
+
 
 func run_physics(delta):
 	if body.flight_mode == "empty":
+		pass
+	if body.flight_mode == "hover":
+		## Position
 		var flat_vel = Vector3(velocity.x, 0, velocity.y)
 		if flat_vel.length_squared() < 0.25:
 			velocity.x = 0
 			velocity.z = 0
-		velocity = body.move_and_slide(velocity + gravity * delta, Vector3.UP)
-	if body.flight_mode == "hover":
-		body.move_and_slide(move_vec * move_accel, Vector3.UP)
+		body.add_central_force(move_vec * move_accel)
+		## Rotation
+		var euler = body.transform.basis.get_euler()
+		var pitch_torque_strength = $PitchPIDController.update(euler.x, delta)
+		body.add_torque(body.transform.basis.x * pitch_torque_strength)
+		var roll_torque_strength = $RollPIDController.update(euler.z, delta)
+		body.add_torque(body.transform.basis.z * roll_torque_strength)
+		$YawPIDController.setpoint = look_direction.get_euler().y
+		var yaw_torque_strength = $YawPIDController.update(euler.y, delta)
+		body.add_torque(body.transform.basis.y * yaw_torque_strength)
 	if body.flight_mode == "jet":
-		body.move_and_slide(-body.transform.basis.z * jet_speed, Vector3.UP)
+		var euler = body.transform.basis.get_euler()
+		$YawPIDController.setpoint = look_direction.get_euler().y
+		var yaw_torque_strength = $YawPIDController.update(euler.y, delta)
+		body.add_torque(body.transform.basis.y * yaw_torque_strength)
+		body.add_central_force(-body.transform.basis.z * jet_speed)
+
+#	if body.flight_mode == "empty":
+#		var flat_vel = Vector3(velocity.x, 0, velocity.y)
+#		if flat_vel.length_squared() < 0.25:
+#			velocity.x = 0
+#			velocity.z = 0
+#		velocity = body.move_and_slide(velocity + gravity * delta, Vector3.UP)
+#	if body.flight_mode == "hover":
+#		body.move_and_slide(move_vec * move_accel, Vector3.UP)
+#	if body.flight_mode == "jet":
+#		body.move_and_slide(-body.transform.basis.z * jet_speed, Vector3.UP)
 
 func do_sync():
 	rpc_unreliable("sync_movement", body.transform)

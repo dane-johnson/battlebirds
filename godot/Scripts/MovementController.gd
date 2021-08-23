@@ -3,7 +3,7 @@ class_name MovementController
 extends Node
 
 export(NodePath) var body_node
-onready var body: KinematicBody = get_node(body_node)
+onready var body = get_node(body_node)
 
 export(float) var move_accel = 1.0
 export(float) var max_speed = 10.0

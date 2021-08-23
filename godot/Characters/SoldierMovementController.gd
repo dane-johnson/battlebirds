@@ -43,7 +43,7 @@ func run_physics(delta):
 	velocity.x = flat_vel.x
 	velocity.z = flat_vel.z
 
-	velocity = body.move_and_slide_with_snap(velocity + gravity * delta, snap, Vector3.UP, true)
+	velocity = body.move_and_slide_with_snap(velocity + gravity * delta, snap, Vector3.UP, true, 4, PI/4, false)
 
 	on_ground = body.is_on_floor()
 

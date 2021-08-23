@@ -72,9 +72,9 @@ func _process(_delta):
 			weapon_manager.rpc("unfire")
 			vehicle.stop_aiming()
 		if vehicle.flight_mode == "hover" and vehicle.aiming:
-			vehicle.rset_unreliable("look_direction", camera_rig.transform.basis)
+			movement_controller.rset_unreliable("look_direction", camera_rig.transform.basis)
 		if vehicle.flight_mode == "jet":
-			vehicle.rset_unreliable("look_direction", camera_rig.transform.basis)
+			movement_controller.rset_unreliable("look_direction", camera_rig.transform.basis)
 
 func _input(event):
 	if not Util.is_local(self): return
@@ -124,7 +124,7 @@ remotesync func enter_vehicle(vehicle_name):
 	if Util.is_local(self):
 		soldier.get_node("CameraRemote").remote_path = ""
 		vehicle.get_node("CameraRemote").remote_path = camera_rig.get_path()
-		camera_rig.snap_to(vehicle.transform.basis)
+		##camera_rig.snap_to(vehicle.transform.basis)
 		camera_rig.camera.transform = camera_rig.get_node("Far").transform
 		health_manager = vehicle.health_manager
 		health_manager.connect("dead", self, "on_vehicle_exploded")
