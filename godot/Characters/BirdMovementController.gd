@@ -11,7 +11,16 @@ func _ready():
 
 func run_physics(delta):
 	if body.flight_mode == "empty":
-		pass
+		return
+	var euler = body.transform.basis.get_euler()
+	## Always roll towards level
+	var roll_torque_strength = $RollPIDController.update(euler.z, delta)
+	body.add_torque(body.transform.basis.z * roll_torque_strength)
+	## Always yaw towards look direction
+	$YawPIDController.setpoint = look_direction.get_euler().y
+	var yaw_torque_strength = $YawPIDController.update(euler.y, delta)
+	body.add_torque(body.transform.basis.y * yaw_torque_strength)
+
 	if body.flight_mode == "hover":
 		## Position
 		var flat_vel = Vector3(velocity.x, 0, velocity.y)
@@ -20,20 +29,15 @@ func run_physics(delta):
 			velocity.z = 0
 		body.add_central_force(move_vec * move_accel)
 		## Rotation
-		var euler = body.transform.basis.get_euler()
+		$PitchPIDController.setpoint = 0
 		var pitch_torque_strength = $PitchPIDController.update(euler.x, delta)
 		body.add_torque(body.transform.basis.x * pitch_torque_strength)
-		var roll_torque_strength = $RollPIDController.update(euler.z, delta)
-		body.add_torque(body.transform.basis.z * roll_torque_strength)
-		$YawPIDController.setpoint = look_direction.get_euler().y
-		var yaw_torque_strength = $YawPIDController.update(euler.y, delta)
-		body.add_torque(body.transform.basis.y * yaw_torque_strength)
 	if body.flight_mode == "jet":
-		var euler = body.transform.basis.get_euler()
-		$YawPIDController.setpoint = look_direction.get_euler().y
-		var yaw_torque_strength = $YawPIDController.update(euler.y, delta)
-		body.add_torque(body.transform.basis.y * yaw_torque_strength)
+		## Position
 		body.add_central_force(-body.transform.basis.z * jet_speed)
+		$PitchPIDController.setpoint = look_direction.get_euler().x
+		var pitch_torque_strength = $PitchPIDController.update(euler.x, delta)
+		body.add_torque(body.transform.basis.x * pitch_torque_strength)
 
 #	if body.flight_mode == "empty":
 #		var flat_vel = Vector3(velocity.x, 0, velocity.y)

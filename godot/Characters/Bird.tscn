@@ -248,9 +248,10 @@ lerp_speed = 100.0
 
 [node name="PitchPIDController" type="Node" parent="MovementController"]
 script = ExtResource( 8 )
-p = 16.0
-d = 18.0
-max_power = 20.0
+p = 60.0
+i = 20.0
+d = 50.0
+max_power = 100.0
 
 [node name="RollPIDController" type="Node" parent="MovementController"]
 script = ExtResource( 8 )
