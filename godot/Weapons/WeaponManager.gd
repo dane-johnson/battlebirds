@@ -26,10 +26,13 @@ func _ready():
 		weapon.connect("fired_projectile", self, "on_weapon_fired_projectile")
 
 remotesync func set_active_weapon(new_active_weapon):
-	weapons.get_child(active_weapon).hide()
-	weapons.get_child(new_active_weapon).show()
-	active_weapon = new_active_weapon
-	emit_signal("active_weapon_changed", weapons.get_child(new_active_weapon))
+	var prev = weapons.get_child(active_weapon)
+	var next = weapons.get_child(new_active_weapon)
+	if next.unlimited_ammo or next.ammo_in_reserve > 0 or next.ammo_in_clip > 0:
+		prev.hide()
+		next.show()
+		active_weapon = new_active_weapon
+		emit_signal("active_weapon_changed", next)
 
 remotesync func fire():
 	weapons.get_child(active_weapon).fire()
@@ -41,6 +44,14 @@ func on_weapon_fired(damage, spread_angle):
 	if not is_network_master():
 		return
 	hitscans.append({"damage": damage, "spread": spread_angle})
+
+func weapon_can_accept_ammo(weapon_number):
+	var weapon = weapons.get_child(weapon_number)
+	return not weapon.unlimited_ammo and weapon.ammo_in_reserve + weapon.ammo_in_clip < weapon.max_ammo
+
+func give_ammo(weapon_number, amount):
+	var weapon = weapons.get_child(weapon_number)
+	weapon.rpc("give_ammo", amount)
 
 func on_weapon_fired_projectile(projectile_name):
 	projectiles.append(projectile_name)

@@ -1,7 +1,8 @@
 extends Weapon
 
 func _ready():
-	._ready() ## Call super
+	ammo_in_clip = shots_per_clip
+	ammo_in_reserve = max_ammo - shots_per_clip
 	$ReloadTimer.connect("timeout", self, "on_reload_complete")
 
 func fire():
@@ -9,7 +10,7 @@ func fire():
 	if ammo_in_clip > 0:
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play("fire")
-		ammo_in_clip -= 1
+		rset_unreliable("ammo_in_clip", ammo_in_clip - 1)
 	else:
 		reload()
 
@@ -24,4 +25,4 @@ func reload():
 
 func on_reload_complete():
 	reloading = false
-	ammo_in_clip = shots_per_clip
+	rset_unreliable("ammo_in_clip", shots_per_clip)

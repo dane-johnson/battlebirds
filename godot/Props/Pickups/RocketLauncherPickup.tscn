@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Materials/raw/edges.png" type="Texture" id=1]
 [ext_resource path="res://Props/Pickups/PickupBase.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Weapons/raw/bar.glb" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_local_to_scene = true
@@ -10,20 +9,17 @@ resource_name = "Material"
 flags_transparent = true
 vertex_color_use_as_albedo = true
 params_depth_draw_mode = 3
-albedo_color = Color( 1, 0, 0, 0.839216 )
+albedo_color = Color( 0.956863, 0.47451, 0.0509804, 0.780392 )
 albedo_texture = ExtResource( 1 )
 roughness = 0.5
 
-[node name="MachineGunPickup" instance=ExtResource( 2 )]
-color = Color( 1, 0, 0, 0.839216 )
-weapon_number = 1
-amount = 100
+[node name="RocketLauncherPickup" instance=ExtResource( 2 )]
+color = Color( 0.956863, 0.47451, 0.0509804, 0.780392 )
+weapon_number = 2
+amount = 10
 
 [node name="Cube" parent="." index="0"]
 material/0 = SubResource( 1 )
 
-[node name="bar" parent="Cube" index="0" instance=ExtResource( 3 )]
-transform = Transform( -6.99155e-08, 0, -1.59948, 0, 1.59948, 0, 1.59948, 0, -6.99155e-08, 0, 0.50036, 0 )
-
 [node name="SpotLight" parent="." index="2"]
-light_color = Color( 1, 0, 0, 0.839216 )
+light_color = Color( 0.956863, 0.47451, 0.0509804, 0.780392 )

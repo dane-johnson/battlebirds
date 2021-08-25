@@ -3,7 +3,6 @@ extends Weapon
 var active_flash
 
 func _ready():
-	._ready() ## Call super
 	active_flash = 0
 	for i in range(1, 4):
 		$MuzzleFlashes.get_child(i).hide()

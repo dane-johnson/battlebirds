@@ -1,7 +1,6 @@
 extends Weapon
 
 func _ready():
-	._ready() ## Call super
 	$ReloadTimer.connect("timeout", self, "on_reload_complete")
 
 func fire():

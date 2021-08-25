@@ -13,16 +13,12 @@ export(int) var crosshair_frame = 11
 export(String) var projectile_name
 
 
-var ammo_in_clip = 0
-var ammo_in_reserve = 0
+mastersync var ammo_in_clip = 0
+mastersync var ammo_in_reserve = 0
 var reloading = false
 
 signal fired
 signal fired_projectile
-
-func _ready():
-	ammo_in_clip = shots_per_clip
-	ammo_in_reserve = max_ammo - shots_per_clip
 
 func fire():
 	## All weapons should implement `fire' (right?)
@@ -33,6 +29,15 @@ func unfire():
 
 func reload():
 	pass
+
+remotesync func give_ammo(amount):
+	amount = min(amount, max_ammo - ammo_in_clip - ammo_in_reserve)
+	if ammo_in_clip == 0:
+		var clip = min(amount, shots_per_clip)
+		rset("ammo_in_clip", clip)
+		rset("ammo_in_reserve", ammo_in_reserve + (amount - clip))
+	else:
+		rset("ammo_in_reserve", ammo_in_reserve + amount)
 
 func signal_fired():
 	emit_signal("fired", damage, spread_angle)

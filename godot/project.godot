@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/MovementController.gd"
 }, {
+"base": "Spatial",
+"class": "Pickup",
+"language": "GDScript",
+"path": "res://Props/Pickups/Pickup.gd"
+}, {
 "base": "Object",
 "class": "Util",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": "",
 "MovementController": "",
+"Pickup": "",
 "Util": "",
 "Weapon": ""
 }

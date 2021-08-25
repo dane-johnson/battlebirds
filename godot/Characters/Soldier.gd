@@ -51,9 +51,10 @@ func stop_aiming():
 func unaim():
 	aiming = false
 
+
 master func impact(force):
 	movement_controller.velocity += force * 100.0
-		
+
 remotesync func die():
 	$CameraRemote.remote_path = ""
 	$BodyCollision.queue_free()
@@ -64,9 +65,15 @@ remotesync func die():
 	root.add_child(self)
 
 func ragdoll():
-	$Skeleton2/Skeleton.physical_bones_start_simulation(["torso", "upperlegl", "lowerlegl", "upperarml", "lowerarml", "upperarmr", "lowerarmr", "upperlegr", "lowerlegr", "root"])	
+	$Skeleton2/Skeleton.physical_bones_start_simulation(["torso", "upperlegl", "lowerlegl", "upperarml", "lowerarml", "upperarmr", "lowerarmr", "upperlegr", "lowerlegr", "root"])
 
 remote func sync_variables(aiming, was_falling, look_direction):
 	self.aiming = aiming
 	self.was_falling = was_falling
 	self.look_direction = look_direction
+
+func will_accept_ammo(ammo_type, weapon_number):
+	return ammo_type == Pickup.ammo_type.SOLDIER and weapon_manager.weapon_can_accept_ammo(weapon_number)
+
+func give_ammo(weapon_number, amount):
+	weapon_manager.give_ammo(weapon_number, amount)
