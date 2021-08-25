@@ -57,11 +57,14 @@ master func impact(force):
 remotesync func die():
 	$CameraRemote.remote_path = ""
 	$BodyCollision.queue_free()
-	$Skeleton2/Skeleton.physical_bones_start_simulation()
+	ragdoll()
 	anim_tree.active = false
 	var root = get_tree().get_root()
 	get_parent().remove_child(self)
 	root.add_child(self)
+
+func ragdoll():
+	$Skeleton2/Skeleton.physical_bones_start_simulation(["torso", "upperlegl", "lowerlegl", "upperarml", "lowerarml", "upperarmr", "lowerarmr", "upperlegr", "lowerlegr", "root"])	
 
 remote func sync_variables(aiming, was_falling, look_direction):
 	self.aiming = aiming
