@@ -173,6 +173,7 @@ remotesync func spawn(spawn_point = Transform()):
 	if Util.is_local(self):
 		soldier.get_node("CameraRemote").remote_path = camera_rig.get_path()
 		weapon_manager.connect("active_weapon_changed", self, "active_weapon_changed")
+		weapon_manager.connect("lock_on_tgt", self, "on_lock_on")
 		active_weapon_changed(weapon_manager.weapons.get_child(0))
 	mode = SOLDIER
 
@@ -185,3 +186,11 @@ func die():
 func active_weapon_changed(weapon):
 	active_weapon = weapon
 	hud.set_crosshair_frame(weapon.crosshair_frame)
+
+func on_lock_on(tgt):
+	hud.lock_on_tgt = tgt
+	if tgt != null:
+		hud.lock_on.show()
+		hud.lock_on.get_node("AnimationPlayer").play("LockOn")
+	else:
+		hud.lock_on.hide()

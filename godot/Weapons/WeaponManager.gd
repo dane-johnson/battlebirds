@@ -1,6 +1,7 @@
 extends Spatial
 
 signal active_weapon_changed
+signal lock_on_tgt
 
 const dirt_prefab = preload("res://Effects/DirtHit.tscn")
 
@@ -62,16 +63,18 @@ func _process(_delta):
 	if not Util.is_local(self):
 		return
 	var weapon = weapons.get_child(active_weapon)
-	lock_on_tgt = null
+	var new_lock_on_tgt = null
 	if weapon.lock_on:
 		for vehicle in VehicleManager.get_children():
 			if vehicle.flight_mode != "empty" and vehicle != get_parent():
 				var direction = camera_rig.camera.global_transform.origin.direction_to(vehicle.transform.origin)
 				var angle = direction.dot(-camera_rig.camera.global_transform.basis.z)
 				if direction.dot(-camera_rig.camera.global_transform.basis.z) > 0.95:
-					lock_on_tgt = vehicle
+					new_lock_on_tgt = vehicle
 					break
-
+	if new_lock_on_tgt != lock_on_tgt:
+		emit_signal("lock_on_tgt", new_lock_on_tgt)
+		lock_on_tgt = new_lock_on_tgt
 
 
 func _physics_process(_delta):

@@ -6,15 +6,22 @@ enum {
 
 var mode = DEAD
 
+var lock_on_tgt
+
 onready var crosshair = $Center/Crosshair
 onready var ammo_counter = $AmmoCounter
 onready var health_counter = $HealthCounter
 onready var respawn_timer = $Center/RespawnTimer
+onready var lock_on = $LockOn
 
 func _ready():
 	crosshair.hide()
 	ammo_counter.hide()
 	health_counter.hide()
+
+func _process(_delta):
+	if lock_on_tgt:
+		lock_on.position = get_parent().camera_rig.camera.unproject_position(lock_on_tgt.transform.origin)
 
 func change_mode(new_mode):
 	## Disable the old mode
