@@ -19,6 +19,8 @@ var projectiles = []
 var camera_rig
 var raycast_ignores = []
 
+var lock_on_tgt = null
+
 func _ready():
 	set_active_weapon(0)
 	for weapon in weapons.get_children():
@@ -56,6 +58,22 @@ func give_ammo(weapon_number, amount):
 func on_weapon_fired_projectile(projectile_name):
 	projectiles.append(projectile_name)
 
+func _process(_delta):
+	if not Util.is_local(self):
+		return
+	var weapon = weapons.get_child(active_weapon)
+	lock_on_tgt = null
+	if weapon.lock_on:
+		for vehicle in VehicleManager.get_children():
+			if vehicle.flight_mode != "empty" and vehicle != get_parent():
+				var direction = camera_rig.camera.global_transform.origin.direction_to(vehicle.transform.origin)
+				var angle = direction.dot(-camera_rig.camera.global_transform.basis.z)
+				if direction.dot(-camera_rig.camera.global_transform.basis.z) > 0.95:
+					lock_on_tgt = vehicle
+					break
+
+
+
 func _physics_process(_delta):
 	if not is_network_master() or not camera_rig:
 		return
@@ -66,7 +84,7 @@ func _physics_process(_delta):
 		var projectile_transform = Transform()
 		projectile_transform.basis = camera.basis
 		projectile_transform.origin = src
-		rpc("fire_projectile", projectile_name, projectile_transform)
+		rpc("fire_projectile", projectile_name, projectile_transform, lock_on_tgt.name)
 	projectiles = []
 	## Fire hitscan weapons
 	var space_state = get_world().direct_space_state
@@ -96,7 +114,10 @@ remotesync func do_hit(hitscan, result):
 	else:
 		dirt.look_at(result["normal"] + result["position"], Vector3.FORWARD)
 
-remotesync func fire_projectile(projectile_name, projectile_transform):
+remotesync func fire_projectile(projectile_name, projectile_transform, projectile_tgt):
 	var projectile = projectile_names[projectile_name].instance()
 	get_tree().get_root().add_child(projectile)
 	projectile.transform = projectile_transform
+	if projectile_tgt:
+		var tgt = VehicleManager.get_node(projectile_tgt)
+		projectile.tgt = tgt

@@ -2,7 +2,7 @@ extends KinematicBody
 
 onready var movement_controller = $MovementController
 onready var health_manager = $HealthManager
-onready var weapon_manager = $WeaponManager
+onready var weapon_manager = $BirdWeaponManager
 onready var spawn_transform = global_transform
 
 remotesync var look_direction

@@ -82,10 +82,10 @@ transform = Transform( -0.988156, 0, 0.153452, 0, 1, 0, -0.153452, 0, -0.988156,
 transform = Transform( -0.992726, 0, -0.120397, 0, 1, 0, 0.120397, 0, -0.992726, -19.3291, 0, -62.0205 )
 
 [node name="Bird" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.0465, -31.8111 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.0523, -31.8111 )
 
 [node name="Bird2" parent="." instance=ExtResource( 8 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.62308e-06, 14.0465, 33.7764 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.62308e-06, 12.7977, 33.7764 )
 
 [node name="InvisibleWalls" type="StaticBody" parent="."]
 collision_layer = 0

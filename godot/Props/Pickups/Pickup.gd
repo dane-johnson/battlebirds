@@ -30,7 +30,7 @@ func on_player_entered(body):
 
 remotesync func on_collected():
 	hide()
-	$Area.monitoring = false
+	$Area.set_deferred("monitoring", false)
 	$Timer.start()
 
 func reactivate():

@@ -1289,10 +1289,10 @@ material/0 = ExtResource( 3 )
 material/1 = ExtResource( 2 )
 
 [node name="RightHand" type="BoneAttachment" parent="Skeleton2/Skeleton"]
-transform = Transform( -0.915929, 0.401329, 0.00295248, -0.40111, -0.915129, -0.0406335, -0.0136051, -0.0384014, 0.99917, -0.925854, -0.163611, 0.0262963 )
+transform = Transform( -0.916328, 0.400429, 0.000454538, -0.400387, -0.916216, -0.0154832, -0.00578303, -0.0143694, 0.999881, -0.925854, -0.16202, 0.0225612 )
 bone_name = "hand.r"
 
-[node name="WeaponManager" parent="Skeleton2/Skeleton/RightHand" instance=ExtResource( 7 )]
+[node name="SoldierWeaponManager" parent="Skeleton2/Skeleton/RightHand" instance=ExtResource( 7 )]
 transform = Transform( -0.0374544, 1.36315, -0.0100034, 0.277072, 0.0174141, 1.33513, 1.33473, 0.0346365, -0.277436, -0.0817595, 0.535383, -0.116818 )
 
 [node name="Physical Bone torso" type="PhysicalBone" parent="Skeleton2/Skeleton"]
@@ -1316,8 +1316,8 @@ shape = SubResource( 3 )
 transform = Transform( 0.798463, 0.601869, 0.0144896, -0.599207, 0.792141, 0.116029, 0.0583562, -0.101327, 0.993141, 0.946737, 1.3513, -0.0967133 )
 collision_layer = 4
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0103664, -0.569405, 0.0398944 )
-body_offset = Transform( 0.613187, -0.781452, -0.115469, 0.777154, 0.622976, -0.0890601, 0.14153, -0.0351265, 0.989311, -0.434, 0.366335, -0.058002 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0103658, -0.569406, 0.0398943 )
+body_offset = Transform( 0.613187, -0.781452, -0.115469, 0.777154, 0.622976, -0.0890601, 0.14153, -0.0351265, 0.989311, -0.434001, 0.366335, -0.058002 )
 bone_name = "upperarm.l"
 joint_constraints/swing_span = 33.96
 joint_constraints/twist_span = 180.0
@@ -1348,11 +1348,11 @@ transform = Transform( 1, -1.22236e-09, 2.76486e-10, 5.64614e-09, -2.98023e-08, 
 shape = SubResource( 5 )
 
 [node name="Physical Bone upperarmr" type="PhysicalBone" parent="Skeleton2/Skeleton"]
-transform = Transform( 0.0176041, -0.994189, -0.1062, 0.999846, 0.0174745, 0.00215704, -0.000288666, -0.106221, 0.994343, -0.852897, 0.910224, 0.0821459 )
+transform = Transform( 0.0176041, -0.994189, -0.1062, 0.999846, 0.0174744, 0.00215704, -0.000288666, -0.106221, 0.994343, -0.852897, 0.910224, 0.0821459 )
 collision_layer = 4
 joint_type = 2
 joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00540321, -0.246334, -0.108928 )
-body_offset = Transform( 1, 6.47498e-07, 1.01805e-07, -4.11201e-08, 1, 2.16067e-07, 1.33005e-08, -8.19564e-08, 1, -0.00540304, 0.246334, 0.108928 )
+body_offset = Transform( 1, 6.45639e-07, 1.01805e-07, -4.30191e-08, 1, 2.16067e-07, 1.35333e-08, -8.9407e-08, 1, -0.00540304, 0.246334, 0.108928 )
 bone_name = "upperarm.r"
 joint_constraints/swing_span = 33.0
 joint_constraints/twist_span = 180.0
@@ -1386,7 +1386,7 @@ shape = SubResource( 7 )
 transform = Transform( 1, -6.89543e-08, 1.07684e-08, -6.98972e-09, -0.0462974, 0.998928, -2.57155e-08, -0.998928, -0.0462974, 2.98023e-08, -0.603209, -1.00156 )
 collision_layer = 4
 joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31549e-08, 1.55718e-07, 1.23998 )
-body_offset = Transform( 1, -6.89543e-08, 1.07684e-08, 2.60115e-08, 1, 1.86265e-08, -5.79166e-09, -1.11759e-08, 1, 2.98023e-08, -1.78814e-07, -1.23998 )
+body_offset = Transform( 1, -6.89543e-08, 1.07684e-08, 2.60115e-08, 1, 1.86265e-08, -5.79166e-09, -7.45058e-09, 1, 2.98023e-08, -1.78814e-07, -1.23998 )
 bone_name = "root"
 
 [node name="CollisionShape" type="CollisionShape" parent="Skeleton2/Skeleton/Physical Bone root"]
@@ -1432,7 +1432,7 @@ transform = Transform( -0.997051, -0.076756, 3.99017e-06, 0.0767568, -0.997051, 
 collision_layer = 4
 joint_type = 2
 joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0662033, -0.51528, -0.0368669 )
-body_offset = Transform( 0.998703, -0.0509299, 2.71521e-08, 0.05093, 0.998703, -1.2666e-07, -5.58884e-09, 5.96038e-08, 1, -0.0923606, 0.51124, 0.0368669 )
+body_offset = Transform( 0.998703, -0.0509299, 2.71521e-08, 0.05093, 0.998703, -1.2666e-07, -5.58839e-09, 5.96038e-08, 1, -0.0923606, 0.51124, 0.0368669 )
 bone_name = "upperleg.r"
 joint_constraints/swing_span = 18.0
 joint_constraints/twist_span = 180.0

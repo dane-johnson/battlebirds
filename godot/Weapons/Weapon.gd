@@ -8,6 +8,7 @@ export(bool) var unlimited_ammo = false
 export(int) var max_ammo = 100
 export(int) var shots_per_clip = 10
 export(int) var crosshair_frame = 11
+export(bool) var lock_on = false
 
 ## For projectile weapons, should be one of the keys from WeaponManager.projectile_names
 export(String) var projectile_name

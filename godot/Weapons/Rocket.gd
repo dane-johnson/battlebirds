@@ -4,7 +4,11 @@ const explosion_prefab = preload("res://Effects/Explosion.tscn")
 
 const speed = 20.0
 
+var tgt: Spatial
+
 func _physics_process(delta):
+	if tgt:
+		look_at(tgt.global_transform.origin, Vector3.UP)
 	var collision = move_and_collide(-transform.basis.z * speed * delta)
 	if collision:
 		var explosion = explosion_prefab.instance()
