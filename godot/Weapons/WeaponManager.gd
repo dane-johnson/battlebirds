@@ -87,7 +87,7 @@ func _physics_process(_delta):
 		var projectile_transform = Transform()
 		projectile_transform.basis = camera.basis
 		projectile_transform.origin = src
-		rpc("fire_projectile", projectile_name, projectile_transform, lock_on_tgt.name)
+		rpc("fire_projectile", projectile_name, projectile_transform, lock_on_tgt.name if lock_on_tgt else null)
 	projectiles = []
 	## Fire hitscan weapons
 	var space_state = get_world().direct_space_state
