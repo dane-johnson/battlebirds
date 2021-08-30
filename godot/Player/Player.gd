@@ -114,8 +114,7 @@ func try_enter_exit_vehicle():
 remotesync func enter_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
 	mode = VEHICLE
-	remove_child(soldier)
-	soldier.hide()
+	soldier.rpc("disable")
 	self.vehicle = vehicle
 	movement_controller = vehicle.movement_controller
 	if Util.is_local(self):
@@ -131,8 +130,7 @@ remotesync func enter_vehicle(vehicle_name):
 remotesync func exit_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
 	mode = SOLDIER
-	add_child(soldier)
-	soldier.show()
+	soldier.rpc("enable")
 	self.vehicle = null
 	movement_controller = soldier.movement_controller
 	if Util.is_local(self):

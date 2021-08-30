@@ -64,6 +64,14 @@ remotesync func die():
 	get_parent().remove_child(self)
 	root.add_child(self)
 
+remotesync func disable():
+	hide()
+	$BodyCollision.disabled = true
+
+remotesync func enable():
+	show()
+	$BodyCollision.disabled = false
+
 func ragdoll():
 	$Skeleton2/Skeleton.physical_bones_start_simulation(["torso", "upperlegl", "lowerlegl", "upperarml", "lowerarml", "upperarmr", "lowerarmr", "upperlegr", "lowerlegr", "root"])
 
