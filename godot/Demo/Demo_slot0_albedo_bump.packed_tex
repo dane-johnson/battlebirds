@@ -1,0 +1,8 @@
+{
+	"contains_albedo": true,
+	"resolution": 512,
+	"src": {
+		"a": "res://Materials/raw/ground_bump.png",
+		"rgb": "res://Materials/raw/ground_dirt_1226_9352_Small.jpg"
+	}
+}
