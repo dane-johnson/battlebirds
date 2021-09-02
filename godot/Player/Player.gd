@@ -17,6 +17,8 @@ var weapon_manager
 var active_weapon
 var health_manager
 
+const freelook_speed = 30
+
 func _ready():
 	if Util.is_local(self):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,7 +29,7 @@ func _ready():
 		camera_rig.queue_free()
 		hud.hide()
 
-func _process(_delta):
+func _process(delta):
 	if not Util.is_local(self): return
 	## Update HUD
 	if mode != DEAD:
@@ -36,12 +38,13 @@ func _process(_delta):
 	else:
 		hud.update_respawn(int(ceil(respawn_timer.time_left)))
 
-	## Update movement
-	if movement_controller:
-		var move_vec = Vector3( \
+	var move_vec = Vector3( \
 			Input.get_action_strength("right") - Input.get_action_strength("left"),\
 			Input.get_action_strength("hover_up") - Input.get_action_strength("hover_down"), \
 			Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
+
+	## Update movement
+	if movement_controller:
 		movement_controller.move_vec = camera_rig.transform.basis.xform(move_vec)
 
 	## Update soldier stuff
@@ -72,6 +75,9 @@ func _process(_delta):
 			weapon_manager.rpc("unfire")
 			vehicle.stop_aiming()
 		vehicle.rset_unreliable("look_direction", camera_rig.transform.basis)
+	elif mode == DEAD:
+		## Freelook
+		camera_rig.translate(move_vec * delta * freelook_speed)
 
 func _input(event):
 	if not Util.is_local(self): return

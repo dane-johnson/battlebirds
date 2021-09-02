@@ -2176,7 +2176,7 @@ material/5 = null
 material/6 = null
 
 [node name="HandSocket" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -0.037364, 0.353766, -0.934592, -0.771238, -0.604923, -0.198142, -0.635449, 0.713386, 0.29544, -0.484492, 0.101258, 0.336965 )
+transform = Transform( -0.0237495, 0.32005, -0.947108, -0.77224, -0.607517, -0.185927, -0.634886, 0.726974, 0.261583, -0.484703, 0.078371, 0.337197 )
 bone_name = "Hand.r"
 
 [node name="SoldierWeaponManager" parent="Armature/Skeleton/HandSocket" instance=ExtResource( 7 )]
