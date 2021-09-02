@@ -3,6 +3,7 @@ extends Weapon
 var active_flash
 
 func _ready():
+	ammo_in_clip = shots_per_clip
 	active_flash = 0
 	for i in range(1, 4):
 		$MuzzleFlashes.get_child(i).hide()
