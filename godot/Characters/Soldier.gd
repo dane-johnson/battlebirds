@@ -2,7 +2,7 @@ extends KinematicBody
 
 onready var movement_controller = $MovementController
 onready var anim_tree = $AnimationTree
-onready var weapon_manager = $Skeleton2/Skeleton/RightHand/SoldierWeaponManager
+onready var weapon_manager = $Armature/Skeleton/HandSocket/SoldierWeaponManager
 onready var health_manager = $HealthManager
 
 var aiming
@@ -73,7 +73,7 @@ remotesync func enable():
 	$BodyCollision.disabled = false
 
 func ragdoll():
-	$Skeleton2/Skeleton.physical_bones_start_simulation(["torso", "upperlegl", "lowerlegl", "upperarml", "lowerarml", "upperarmr", "lowerarmr", "upperlegr", "lowerlegr", "root"])
+	$Armature/Skeleton.physical_bones_start_simulation()
 
 remote func sync_variables(aiming, was_falling, look_direction):
 	self.aiming = aiming
