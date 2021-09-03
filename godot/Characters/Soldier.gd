@@ -73,6 +73,7 @@ remotesync func enable():
 	$BodyCollision.disabled = false
 
 func ragdoll():
+	movement_controller.synchronized = false
 	$Armature/Skeleton.physical_bones_start_simulation()
 
 remote func sync_variables(aiming, was_falling, look_direction):

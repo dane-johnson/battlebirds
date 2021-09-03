@@ -10,6 +10,8 @@ export(float) var max_speed = 10.0
 
 export(float) var lerp_speed = 30.0
 
+var synchronized = true
+
 var move_vec = Vector3.ZERO
 
 var velocity = Vector3.ZERO
@@ -29,7 +31,8 @@ func _process(_delta):
 	if not Util.is_local(self):
 		return
 	## Sync member variables
-	do_sync()
+	if synchronized:
+		do_sync()
 
 func run_physics(_delta):
 	pass
