@@ -13,6 +13,7 @@ onready var player = get_parent()
 func _ready():
 	if not Util.is_local(self): return
 	$AimTimer.connect("timeout", self, "unaim")
+	$CleanupTimer.connect("timeout", self, "queue_free")
 
 func _process(_delta):
 	transform.basis = Util.level(look_direction)
@@ -75,6 +76,7 @@ remotesync func enable():
 func ragdoll():
 	movement_controller.synchronized = false
 	$Armature/Skeleton.physical_bones_start_simulation()
+	$CleanupTimer.start()
 
 remote func sync_variables(aiming, was_falling, look_direction):
 	self.aiming = aiming
