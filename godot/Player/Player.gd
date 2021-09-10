@@ -129,10 +129,7 @@ remotesync func enter_vehicle(vehicle_name):
 		camera_rig.camera.transform = camera_rig.get_node("Far").transform
 		health_manager = vehicle.health_manager
 		health_manager.connect("dead", self, "on_vehicle_exploded")
-		weapon_manager = vehicle.weapon_manager
-		weapon_manager.camera_rig = camera_rig
-		active_weapon_changed(weapon_manager.weapons.get_child(weapon_manager.active_weapon))
-
+		switch_weapon_manager(vehicle.weapon_manager)
 remotesync func exit_vehicle(vehicle_name):
 	var vehicle = VehicleManager.get_node(vehicle_name)
 	mode = SOLDIER
@@ -146,8 +143,16 @@ remotesync func exit_vehicle(vehicle_name):
 		soldier.transform = vehicle.transform.translated(Vector3.UP * 2.0)
 		health_manager.disconnect("dead", self, "on_vehicle_exploded")
 		health_manager = soldier.health_manager
-		weapon_manager = soldier.weapon_manager
-		active_weapon_changed(weapon_manager.weapons.get_child(weapon_manager.active_weapon))
+		switch_weapon_manager(soldier.weapon_manager)
+
+func switch_weapon_manager(new_weapon_manager):
+	if weapon_manager:
+		weapon_manager.active = false
+	weapon_manager = new_weapon_manager
+	weapon_manager.active = true
+	weapon_manager.camera_rig = camera_rig
+	active_weapon_changed(weapon_manager.weapons.get_child(weapon_manager.active_weapon))
+
 
 func on_vehicle_exploded():
 	VehicleManager.rpc("player_exits", name, vehicle.name)
@@ -163,8 +168,7 @@ remotesync func spawn(spawn_point = Transform()):
 	## Setup movement
 	movement_controller = soldier.movement_controller
 	## Setup weapons
-	weapon_manager = soldier.weapon_manager
-	weapon_manager.camera_rig = camera_rig
+	switch_weapon_manager(soldier.weapon_manager)
 	weapon_manager.raycast_ignores.append(soldier)
 	## Setup health
 	health_manager = soldier.health_manager

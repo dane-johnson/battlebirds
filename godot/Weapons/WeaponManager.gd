@@ -13,6 +13,7 @@ const projectile_names = {
 export(float) var out_front = 3.0
 
 var active_weapon = 0
+var active = false
 
 onready var weapons = $Weapons
 
@@ -61,7 +62,7 @@ func on_weapon_fired_projectile(projectile_name):
 	projectiles.append(projectile_name)
 
 func _process(_delta):
-	if not Util.is_local(self):
+	if not Util.is_local(self) or not active:
 		return
 	var weapon = weapons.get_child(active_weapon)
 	var new_lock_on_tgt = null
