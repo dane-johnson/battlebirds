@@ -175,48 +175,48 @@ bind/23/name = "LegIK.r"
 bind/23/bone = -1
 bind/23/pose = Transform( -2.25215, -0.000635558, 5.00079e-16, -5.00079e-16, 0, -2.25215, 0.000635558, -2.25215, -1.41122e-19, -0.233012, -0.00613332, 0.174238 )
 
-[sub_resource type="RayShape" id=47]
+[sub_resource type="RayShape" id=3]
 
-[sub_resource type="CapsuleShape" id=4]
+[sub_resource type="CapsuleShape" id=13]
 radius = 0.38
 height = 0.510862
 
-[sub_resource type="CapsuleShape" id=5]
+[sub_resource type="CapsuleShape" id=4]
 radius = 0.196943
 height = 0.357605
 
-[sub_resource type="CapsuleShape" id=6]
+[sub_resource type="CapsuleShape" id=5]
 radius = 0.0501049
 height = 0.400839
 
-[sub_resource type="CapsuleShape" id=8]
+[sub_resource type="CapsuleShape" id=6]
 radius = 0.208178
 height = 0.5101
 
-[sub_resource type="CapsuleShape" id=9]
+[sub_resource type="CapsuleShape" id=7]
 radius = 0.0501049
 height = 0.400839
 
-[sub_resource type="SphereShape" id=48]
+[sub_resource type="SphereShape" id=8]
 radius = 0.279249
 
-[sub_resource type="CapsuleShape" id=12]
+[sub_resource type="CapsuleShape" id=9]
 radius = 0.369383
 height = 0.273973
 
-[sub_resource type="CapsuleShape" id=13]
+[sub_resource type="CapsuleShape" id=10]
 radius = 0.104177
 height = 0.83342
 
-[sub_resource type="CapsuleShape" id=14]
+[sub_resource type="CapsuleShape" id=11]
 radius = 0.259479
 height = 0.455405
 
-[sub_resource type="CapsuleShape" id=15]
+[sub_resource type="CapsuleShape" id=12]
 radius = 0.104177
 height = 0.83342
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 resource_name = "AimPistol"
 length = 0.0416667
 tracks/0/type = "transform"
@@ -388,7 +388,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=15]
 resource_name = "Backwards_loop"
 length = 0.833333
 loop = true
@@ -561,7 +561,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, 0.104796, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0.0784615, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0, 0, -0.167327, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, 0, 0, -0.119026, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0, 0, 0.0059188, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0, 0, 0.0931105, 0, 0, 0, 1, 1, 1, 1, 0.466667, 1, 0, 0, 0.0616496, 0, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0, 0, -0.0605985, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, 0, 0, -0.158577, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, -0.146891, 0, 0, 0, 1, 1, 1, 1, 0.8, 1, 0, 0, 0.081425, 0, 0, 0, 1, 1, 1, 1, 0.833333, 1, 0, 0, 0.104796, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=16]
 resource_name = "Fall_loop"
 loop = true
 tracks/0/type = "transform"
@@ -733,7 +733,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, 0.487675, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0.491664, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, 0.518001, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0, 0, 0.566728, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0, 0, 0.737358, 0, 0, 0, 1, 1, 1, 1, 0.466667, 1, 0, 0, 0.767813, 0, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0, 0, 0.768638, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, 0, 0, 0.742603, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0.699124, 0, 0, 0, 1, 1, 1, 1, 0.866667, 1, 0, 0, 0.538159, 0, 0, 0, 1, 1, 1, 1, 0.933333, 1, 0, 0, 0.502609, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0.487675, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=17]
 resource_name = "Forwards_loop"
 length = 1.08333
 loop = true
@@ -906,7 +906,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, -0.521531, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -0.478163, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, -0.235745, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0, 0, 0.0667206, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, 0, 0, 0.158074, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0, 0, 0.035688, 0, 0, 0, 1, 1, 1, 1, 0.466667, 1, 0, 0, -0.403603, 0, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0, 0, -0.513831, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, 0, 0, -0.443318, 0, 0, 0, 1, 1, 1, 1, 0.733333, 1, 0, 0, -0.0186154, 0, 0, 0, 1, 1, 1, 1, 0.8, 1, 0, 0, 0.142674, 0, 0, 0, 1, 1, 1, 1, 0.866667, 1, 0, 0, 0.132288, 0, 0, 0, 1, 1, 1, 1, 0.933333, 1, 0, 0, -0.0736395, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, -0.341345, 0, 0, 0, 1, 1, 1, 1, 1.06667, 1, 0, 0, -0.500938, 0, 0, 0, 1, 1, 1, 1, 1.08333, 1, 0, 0, -0.521531, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=18]
 resource_name = "Idle_loop"
 length = 1.625
 loop = true
@@ -1079,7 +1079,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, -0.135465, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -0.136148, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, -0.140602, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0, 0, -0.167327, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0, 0, -0.173731, 0, 0, 0, 1, 1, 1, 1, 0.466667, 1, 0, 0, -0.175826, 0, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0, 0, -0.171723, 0, 0, 0, 1, 1, 1, 1, 0.733333, 1, 0, 0, -0.142757, 0, 0, 0, 1, 1, 1, 1, 0.8, 1, 0, 0, -0.13658, 0, 0, 0, 1, 1, 1, 1, 0.866667, 1, 0, 0, -0.135465, 0, 0, 0, 1, 1, 1, 1, 1.625, 1, 0, 0, -0.135465, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=19]
 resource_name = "Jump"
 length = 0.458333
 tracks/0/type = "transform"
@@ -1251,7 +1251,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, -1.19661, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -1.1693, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, -0.991114, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0, 0, 0.0779889, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0, 0, 0.33421, 0, 0, 0, 1, 1, 1, 1, 0.458333, 1, 0, 0, 0.429154, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=20]
 resource_name = "Land"
 length = 0.791667
 tracks/0/type = "transform"
@@ -1423,7 +1423,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -0.0226312, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, -0.165276, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, 0, 0, -0.656304, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0, 0, -0.840097, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0, 0, -0.863068, 0, 0, 0, 1, 1, 1, 1, 0.466667, 1, 0, 0, -0.766859, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, -0.189608, 0, 0, 0, 1, 1, 1, 1, 0.733333, 1, 0, 0, -0.0512643, 0, 0, 0, 1, 1, 1, 1, 0.791667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=21]
 resource_name = "Rest"
 length = 0.0416667
 tracks/0/type = "transform"
@@ -1595,7 +1595,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=22]
 resource_name = "StrafeLeft_loop"
 length = 0.833333
 loop = true
@@ -1768,7 +1768,7 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, 0.117042, 0, -0.19507, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0.117042, 0, -0.172634, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0.117042, 0, 0.036774, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, 0.117042, 0, 0.0368487, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0.117042, 0, 0.00863951, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0.117042, 0, -0.0573452, 0, 0, 0, 1, 1, 1, 1, 0.533333, 1, 0.117042, 0, -0.275339, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, 0.117042, 0, -0.347246, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0.117042, 0, -0.341932, 0, 0, 0, 1, 1, 1, 1, 0.8, 1, 0.117042, 0, -0.208707, 0, 0, 0, 1, 1, 1, 1, 0.833333, 1, 0.117042, 0, -0.19507, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=23]
 resource_name = "StrafeRight_loop"
 length = 0.791667
 loop = true
@@ -1941,97 +1941,97 @@ tracks/23/imported = true
 tracks/23/enabled = true
 tracks/23/keys = PoolRealArray( 0, 1, -0.117042, 0, -0.19507, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, -0.117042, 0, -0.108315, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, -0.117042, 0, 0.0143375, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, -0.117042, 0, 0.0418308, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, -0.117042, 0, 0.0216261, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, -0.117042, 0, -0.026496, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, -0.117042, 0, -0.118676, 0, 0, 0, 1, 1, 1, 1, 0.533333, 1, -0.117042, 0, -0.329355, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, -0.117042, 0, -0.35216, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, -0.117042, 0, -0.301283, 0, 0, 0, 1, 1, 1, 1, 0.733333, 1, -0.117042, 0, -0.228376, 0, 0, 0, 1, 1, 1, 1, 0.791667, 1, -0.117042, 0, -0.19507, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeBlend2" id=26]
+[sub_resource type="AnimationNodeBlend2" id=24]
 filter_enabled = true
 filters = [ "Armature/Skeleton:ArmIK.l", "Armature/Skeleton:ArmIK.r", "Armature/Skeleton:Fingers.l", "Armature/Skeleton:Fingers.r", "Armature/Skeleton:Hand.l", "Armature/Skeleton:Hand.r", "Armature/Skeleton:LowerArm.l", "Armature/Skeleton:LowerArm.r", "Armature/Skeleton:Thumb.l", "Armature/Skeleton:Thumb.r", "Armature/Skeleton:UpperArm.l", "Armature/Skeleton:UpperArm.r", "Skeleton2/Skeleton:hand.l", "Skeleton2/Skeleton:hand.r", "Skeleton2/Skeleton:head", "Skeleton2/Skeleton:lowerarm.l", "Skeleton2/Skeleton:lowerarm.r", "Skeleton2/Skeleton:upperarm.l", "Skeleton2/Skeleton:upperarm.r" ]
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "Fall_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "Land"
 
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Rest"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Rest"
+
 [sub_resource type="AnimationNodeAnimation" id=30]
-animation = "Rest"
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "Rest"
-
-[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "AimPistol"
 
-[sub_resource type="AnimationNodeBlend2" id=33]
+[sub_resource type="AnimationNodeBlend2" id=31]
+
+[sub_resource type="AnimationNodeOneShot" id=32]
+
+[sub_resource type="AnimationNodeOneShot" id=33]
 
 [sub_resource type="AnimationNodeOneShot" id=34]
 
-[sub_resource type="AnimationNodeOneShot" id=35]
-
-[sub_resource type="AnimationNodeOneShot" id=36]
-
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=35]
 animation = "StrafeRight_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "StrafeLeft_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "Forwards_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "Backwards_loop"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "Idle_loop"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=42]
-blend_point_0/node = SubResource( 37 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=40]
+blend_point_0/node = SubResource( 35 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 38 )
+blend_point_1/node = SubResource( 36 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 39 )
+blend_point_2/node = SubResource( 37 )
 blend_point_2/pos = Vector2( 0, 1 )
-blend_point_3/node = SubResource( 40 )
+blend_point_3/node = SubResource( 38 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 41 )
+blend_point_4/node = SubResource( 39 )
 blend_point_4/pos = Vector2( 0, 0 )
 
-[sub_resource type="AnimationNodeOneShot" id=43]
+[sub_resource type="AnimationNodeOneShot" id=41]
 
-[sub_resource type="AnimationNodeBlendTree" id=44]
+[sub_resource type="AnimationNodeBlendTree" id=42]
 graph_offset = Vector2( -271.625, -46.6667 )
-nodes/Aiming/node = SubResource( 26 )
+nodes/Aiming/node = SubResource( 24 )
 nodes/Aiming/position = Vector2( 1040, 0 )
-nodes/Animation/node = SubResource( 32 )
+nodes/Animation/node = SubResource( 30 )
 nodes/Animation/position = Vector2( 880, 220 )
-"nodes/Animation 2/node" = SubResource( 27 )
+"nodes/Animation 2/node" = SubResource( 25 )
 "nodes/Animation 2/position" = Vector2( 100, 240 )
-"nodes/Animation 3/node" = SubResource( 28 )
+"nodes/Animation 3/node" = SubResource( 26 )
 "nodes/Animation 3/position" = Vector2( 360, 240 )
-"nodes/Animation 4/node" = SubResource( 29 )
+"nodes/Animation 4/node" = SubResource( 27 )
 "nodes/Animation 4/position" = Vector2( 580, 260 )
-"nodes/Animation 5/node" = SubResource( 30 )
+"nodes/Animation 5/node" = SubResource( 28 )
 "nodes/Animation 5/position" = Vector2( 1171.5, 215.5 )
-"nodes/Animation 6/node" = SubResource( 31 )
+"nodes/Animation 6/node" = SubResource( 29 )
 "nodes/Animation 6/position" = Vector2( 1440, 240 )
-nodes/Falling/node = SubResource( 33 )
+nodes/Falling/node = SubResource( 31 )
 nodes/Falling/position = Vector2( 300, -40 )
-nodes/Jumping/node = SubResource( 34 )
+nodes/Jumping/node = SubResource( 32 )
 nodes/Jumping/position = Vector2( 540, -40 )
-nodes/Landing/node = SubResource( 35 )
+nodes/Landing/node = SubResource( 33 )
 nodes/Landing/position = Vector2( 760, -40 )
-nodes/Melee/node = SubResource( 36 )
+nodes/Melee/node = SubResource( 34 )
 nodes/Melee/position = Vector2( 1340, -40 )
-nodes/Movement/node = SubResource( 42 )
+nodes/Movement/node = SubResource( 40 )
 nodes/Movement/position = Vector2( 0, -40 )
-nodes/Throw/node = SubResource( 43 )
+nodes/Throw/node = SubResource( 41 )
 nodes/Throw/position = Vector2( 1620, -40 )
 nodes/output/position = Vector2( 1880, -60 )
 node_connections = [ "output", 0, "Throw", "Aiming", 0, "Landing", "Aiming", 1, "Animation", "Falling", 0, "Movement", "Falling", 1, "Animation 2", "Jumping", 0, "Falling", "Jumping", 1, "Animation 3", "Landing", 0, "Jumping", "Landing", 1, "Animation 4", "Melee", 0, "Aiming", "Melee", 1, "Animation 5", "Throw", 0, "Melee", "Throw", 1, "Animation 6" ]
 
-[sub_resource type="CapsuleShape" id=45]
+[sub_resource type="CapsuleShape" id=43]
 radius = 0.7
 height = 0.6
 
@@ -2176,28 +2176,28 @@ material/5 = null
 material/6 = null
 
 [node name="HandSocket" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -0.0484762, 0.383139, -0.922423, -0.769584, -0.603018, -0.210024, -0.636702, 0.699696, 0.324089, -0.484696, 0.101618, 0.33719 )
+transform = Transform( -0.0237501, 0.32005, -0.947108, -0.772239, -0.607517, -0.185927, -0.634887, 0.726975, 0.261582, -0.484704, 0.0755476, 0.337198 )
 bone_name = "Hand.r"
 
 [node name="SoldierWeaponManager" parent="Armature/Skeleton/HandSocket" instance=ExtResource( 7 )]
 transform = Transform( -0.0535777, -1.14661, 0.0104613, 0.474932, -0.012658, 1.04497, -1.04368, 0.0531017, 0.474982, 0.0245538, 0.255098, 0.00844622 )
 
 [node name="Physical Bone Root" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( 0.999999, 3.00352e-08, -4.65661e-10, -3.72529e-09, 0, 0.999999, 3.53903e-08, -0.999999, 7.45058e-09, 2.84217e-14, 0.746016, -0.862132 )
+transform = Transform( 0.999999, 3.00352e-08, -4.65661e-10, -3.72529e-09, 0, 0.999999, 3.53903e-08, -0.999999, 7.45058e-09, 0, 0.746016, -0.862132 )
 collision_layer = 4
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60011e-14, 5.96047e-08, -5.96088e-23 )
-body_offset = Transform( 0.999999, 3.00352e-08, -4.65661e-10, -3.53903e-08, 0.999999, -7.45058e-09, -3.72529e-09, 0, 0.999999, 1.42109e-14, -5.96046e-08, 0 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30862e-11, 1.77805e-07, -0.135465 )
+body_offset = Transform( 0.999999, 3.00352e-08, -4.65661e-10, -3.53903e-08, 0.999999, -7.45058e-09, -3.72529e-09, 0, 0.999999, 0, -1.78814e-07, 0.135465 )
 bone_name = "Root"
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone Root"]
-shape = SubResource( 47 )
+shape = SubResource( 3 )
 
 [node name="Physical Bone Torso" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( 0.999996, -4.47034e-08, -1.19209e-07, -6.73427e-08, 0.997148, -0.0753847, 1.78814e-07, 0.0753846, 0.997149, 1.12032e-07, 0.558248, -0.0518236 )
-collision_layer = 0
+transform = Transform( 0.999996, -4.49425e-08, -1.17006e-07, -6.5022e-08, 0.997148, -0.0753847, 1.76165e-07, 0.0753846, 0.997149, 1.11651e-07, 0.558248, -0.0518236 )
+collision_layer = 4
 joint_type = 3
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17053e-07, -0.314241, 0.0757284 )
-body_offset = Transform( 0.999996, -4.47034e-08, -1.19209e-07, -5.36711e-08, 0.999993, -2.98023e-08, 1.83382e-07, -1.49012e-08, 0.999994, 1.12032e-07, 0.314239, -0.075728 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21072e-07, -0.449322, 0.0859405 )
+body_offset = Transform( 0.995692, 0.0334884, -0.0864127, -0.0273821, 0.9971, 0.0709077, 0.0885375, -0.0682363, 0.993727, 0.0224735, 0.441925, -0.116061 )
 bone_name = "Torso"
 joint_constraints/angular_limit_enabled = false
 joint_constraints/angular_limit_upper = 90.0
@@ -2208,14 +2208,14 @@ joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone Torso"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="Physical Bone UpperArml" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.962749, 0.268588, 0.0311267, -0.27031, -0.958805, -0.087161, 0.00643505, -0.0923284, 0.995697, 0.647771, 0.810676, -0.038129 )
-collision_layer = 0
+transform = Transform( -0.96275, 0.268588, 0.0311267, -0.270311, -0.958806, -0.087161, 0.00643511, -0.0923283, 0.995698, 0.647771, 0.810677, -0.0381289 )
+collision_layer = 4
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0394919, -0.287608, 0.01137 )
-body_offset = Transform( 0.999993, -2.00991e-07, 6.28643e-07, -2.04641e-06, 0.999986, -3.12924e-07, 6.98492e-09, -8.19564e-08, 0.99999, -0.0394917, 0.287604, -0.0113699 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0394919, -0.287608, 0.0113699 )
+body_offset = Transform( 0.999993, -1.95636e-07, 6.29574e-07, -2.02132e-06, 0.999986, -3.20375e-07, 1.07102e-08, -8.19564e-08, 0.99999, -0.0394917, 0.287604, -0.0113699 )
 bone_name = "UpperArm.l"
 joint_constraints/swing_span = 28.91
 joint_constraints/twist_span = 180.0
@@ -2225,14 +2225,14 @@ joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone UpperArml"]
 transform = Transform( 1, -2.79397e-09, 1.53435e-07, -1.17987e-07, 7.45058e-09, 1, 1.53668e-08, -1, 7.45058e-09, -0.115023, 0.162556, 0.00590739 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Physical Bone LowerArml" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.9855, 0.166814, -0.0309414, -0.169114, -0.951226, 0.25799, 0.0136061, 0.259482, 0.965647, 0.847732, -0.136766, 0.0676457 )
-collision_layer = 0
+transform = Transform( -0.985501, 0.166814, -0.0309413, -0.169114, -0.951226, 0.25799, 0.0136062, 0.259482, 0.965647, 0.847733, -0.136767, 0.0676457 )
+collision_layer = 4
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154501, -0.422196, -0.0388467 )
-body_offset = Transform( 0.999993, -4.46569e-07, 1.06264e-06, 6.22822e-07, 0.999994, -5.36442e-07, 8.34465e-07, 2.98023e-07, 0.999995, -0.0154501, 0.422194, 0.0388467 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154501, -0.422196, -0.0388468 )
+body_offset = Transform( 0.999993, -4.23053e-07, 1.05891e-06, 6.28876e-07, 0.999994, -5.06639e-07, 8.28877e-07, 2.98023e-07, 0.999995, -0.0154501, 0.422194, 0.0388467 )
 bone_name = "LowerArm.l"
 joint_constraints/swing_span = 27.87
 joint_constraints/twist_span = 180.0
@@ -2242,14 +2242,14 @@ joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone LowerArml"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Physical Bone UpperArmr" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.962752, -0.26859, -0.0311266, 0.270313, -0.95881, -0.0871613, -0.00643355, -0.0923286, 0.995701, -0.697961, 0.689823, -0.0502795 )
-collision_layer = 0
+transform = Transform( -0.962752, -0.26859, -0.0311266, 0.270313, -0.958811, -0.0871613, -0.0064336, -0.0923287, 0.995702, -0.697961, 0.689823, -0.0502795 )
+collision_layer = 4
 joint_type = 2
 joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055222, -0.418087, 0.0113724 )
-body_offset = Transform( 0.999996, 5.92961e-07, -8.31205e-07, 4.79806e-07, 0.999991, -2.98023e-07, 1.37882e-06, 0, 0.999994, 0.055222, 0.418083, -0.0113722 )
+body_offset = Transform( 0.999996, 5.90342e-07, -8.32137e-07, 4.83531e-07, 0.999991, -3.05474e-07, 1.37743e-06, 0, 0.999994, 0.055222, 0.418083, -0.0113722 )
 bone_name = "UpperArm.r"
 joint_constraints/swing_span = 26.9
 joint_constraints/twist_span = 180.0
@@ -2259,14 +2259,14 @@ joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone UpperArmr"]
 transform = Transform( 1, -4.65661e-09, 3.74275e-08, 7.21775e-09, 1.49012e-08, 1, 0, -1, 7.45058e-09, 2.38419e-07, -0.0380518, -2.98023e-08 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="Physical Bone LowerArmr" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.9855, -0.166813, 0.0309396, 0.169113, -0.951226, 0.25799, -0.0136061, 0.259483, 0.965649, -0.77523, -0.18498, -0.0624968 )
-collision_layer = 0
+transform = Transform( -0.9855, -0.166814, 0.0309396, 0.169113, -0.951226, 0.25799, -0.0136063, 0.259484, 0.965649, -0.775231, -0.184979, -0.0624969 )
+collision_layer = 4
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0623833, -0.422195, 0.0970223 )
-body_offset = Transform( 0.999992, -1.60653e-08, 6.2678e-07, 1.05472e-07, 0.999995, 2.98023e-07, -1.11107e-06, 1.66893e-06, 0.999997, -0.0623829, 0.422192, -0.0970213 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0623834, -0.422194, 0.0970224 )
+body_offset = Transform( 0.999992, -4.42378e-09, 6.23986e-07, 8.19564e-08, 0.999995, 2.68221e-07, -1.10455e-06, 1.66893e-06, 0.999997, -0.0623829, 0.422192, -0.0970213 )
 bone_name = "LowerArm.r"
 joint_constraints/swing_span = 27.31
 joint_constraints/twist_span = 180.0
@@ -2276,29 +2276,32 @@ joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone LowerArmr"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Physical Bone Hips" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( 1.49012e-07, -5.96042e-08, -0.999994, 5.9604e-08, -0.999987, 1.19208e-07, -0.999993, -1.19208e-07, 5.51341e-07, 0.22159, -0.290361, 0.389831 )
-collision_layer = 0
-joint_type = 1
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389834, -0.337503, 0.221591 )
-body_offset = Transform( 0.999993, 2.91323e-13, -6.10946e-07, 2.0961e-13, 0.999987, 9.31581e-13, -2.98032e-08, 3.51482e-13, 0.999995, -0.389831, 0.337498, -0.22159 )
+transform = Transform( 2.68221e-07, -5.96042e-08, -0.999995, 5.9604e-08, -0.999987, 1.19207e-07, -0.999993, -1.19208e-07, 4.32133e-07, 0.22159, -0.290361, 0.389831 )
+collision_layer = 4
+joint_type = 3
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389834, -0.337502, 0.221591 )
+body_offset = Transform( 0.999993, 2.84217e-13, -6.10946e-07, 2.0961e-13, 0.999987, 9.38686e-13, -2.98032e-08, 3.47929e-13, 0.999995, -0.389831, 0.337498, -0.22159 )
 bone_name = "Hips"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 10.0
+joint_constraints/angular_limit_lower = -10.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone Hips"]
 transform = Transform( 1, -8.52651e-13, -4.26326e-14, 0, 4.18629e-14, 1, -6.66134e-16, -1, -7.34183e-15, 0.411714, 0.0207572, 0.208937 )
-shape = SubResource( 48 )
+shape = SubResource( 8 )
 
 [node name="Physical Bone UpperLegl" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.999897, 0.0133381, -0.00382736, -0.0138624, -0.972282, 0.233385, -0.000606789, 0.233418, 0.972373, 0.222814, -0.809232, 0.137189 )
-collision_layer = 0
+transform = Transform( -0.999897, 0.0133382, -0.00382732, -0.0138625, -0.972283, 0.233385, -0.00060673, 0.233417, 0.972373, 0.222814, -0.809233, 0.137188 )
+collision_layer = 4
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00444206, -0.49107, -0.0232078 )
-body_offset = Transform( 0.999993, -6.64149e-08, 4.41913e-07, -5.6345e-08, 0.999997, 4.91738e-07, 1.16148e-06, 1.37091e-06, 0.999996, 0.00444201, 0.491068, 0.0232084 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00444209, -0.49107, -0.0232078 )
+body_offset = Transform( 0.999993, -6.52653e-08, 4.41854e-07, -5.57193e-08, 0.999997, 5.21541e-07, 1.1613e-06, 1.37091e-06, 0.999996, 0.00444204, 0.491068, 0.0232083 )
 bone_name = "UpperLeg.l"
 joint_constraints/swing_span = 24.57
 joint_constraints/twist_span = 180.0
@@ -2308,14 +2311,14 @@ joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone UpperLegl"]
 transform = Transform( 1, 1.74623e-10, 3.34694e-10, 1.16415e-10, -1.49012e-08, 1, 4.07454e-10, -1, 1.49012e-08, 0, 0, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="Physical Bone LowerLegl" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( 0.000281145, -2.65217e-07, -0.999997, 0.211943, -0.977279, 5.98458e-05, -0.97728, -0.211943, -0.000274701, 0.233208, -1.45839, 0.0954417 )
-collision_layer = 0
+transform = Transform( 0.000281051, -1.72424e-07, -0.999996, 0.211943, -0.97728, 5.9825e-05, -0.97728, -0.211943, -0.000274637, 0.233207, -1.45839, 0.0954413 )
+collision_layer = 4
 joint_type = 3
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0683825, -0.247204, 0.000127598 )
-body_offset = Transform( 1.10621e-06, 1.72775e-07, 0.999996, 1.04308e-07, 0.999997, -1.15248e-07, -0.999998, 2.98023e-08, 1.07707e-06, -0.000127479, 0.247203, -0.0683823 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0683825, -0.247204, 0.000127583 )
+body_offset = Transform( 1.10621e-06, 1.7276e-07, 0.999996, 8.9407e-08, 0.999997, -1.15262e-07, -0.999998, 4.47035e-08, 1.07716e-06, -0.000127465, 0.247203, -0.0683824 )
 bone_name = "LowerLeg.l"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 90.0
@@ -2326,14 +2329,14 @@ joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone LowerLegl"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-shape = SubResource( 13 )
+shape = SubResource( 10 )
 
 [node name="Physical Bone UpperLegr" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.999893, -0.0133382, 0.00382627, 0.0138631, -0.972274, 0.23338, 0.000607909, 0.233411, 0.972367, -0.223901, -0.888555, 0.157571 )
-collision_layer = 0
+transform = Transform( -0.999893, -0.0133381, 0.00382602, 0.013863, -0.972274, 0.23338, 0.000607666, 0.233411, 0.972367, -0.223901, -0.888555, 0.157571 )
+collision_layer = 4
 joint_type = 2
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00444223, -0.572972, -0.0245129 )
-body_offset = Transform( 0.999989, 2.90776e-07, 5.60365e-07, -2.66329e-07, 0.999988, 1.10269e-06, -5.22705e-08, 1.49012e-08, 0.999989, -0.00444201, 0.572965, 0.0245127 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00119019, -0.452981, -0.101579 )
+body_offset = Transform( 0.996242, -0.0421461, -0.0755246, 0.0243023, 0.974453, -0.223217, 0.0830043, 0.220546, 0.971827, -0.0255774, 0.418764, 0.198719 )
 bone_name = "UpperLeg.r"
 joint_constraints/swing_span = 21.19
 joint_constraints/twist_span = 180.0
@@ -2343,14 +2346,14 @@ joint_constraints/relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone UpperLegr"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 11 )
 
 [node name="Physical Bone LowerLegr" type="PhysicalBone" parent="Armature/Skeleton"]
-transform = Transform( -0.000282945, -9.93669e-09, -0.999995, 0.21194, -0.97727, -5.99583e-05, -0.977274, -0.211939, 0.000276521, -0.233207, -1.45839, 0.0954383 )
-collision_layer = 0
+transform = Transform( -0.000282756, 1.2593e-07, -0.999995, 0.211939, -0.97727, -6.005e-05, -0.977275, -0.211939, 0.000276292, -0.233206, -1.45839, 0.0954379 )
+collision_layer = 4
 joint_type = 3
-joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.068383, -0.24721, -0.000126779 )
-body_offset = Transform( 6.84056e-07, -6.71025e-08, 0.999995, -1.2666e-06, 0.999987, 1.6165e-07, -0.999992, -7.30157e-07, 6.18456e-07, 0.000126809, 0.247206, -0.0683826 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0188673, -0.0392103, 0.00347685 )
+body_offset = Transform( 0.00292003, 0.00253678, 0.999987, 0.465087, 0.885244, -0.00360372, -0.885251, 0.465092, 0.00140513, -0.00332224, 0.0434982, 0.00152916 )
 bone_name = "LowerLeg.r"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 90.0
@@ -2361,22 +2364,28 @@ joint_constraints/angular_limit_relaxation = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/Physical Bone LowerLegr"]
 transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 12 )
+
+[node name="Dummy" type="PhysicalBone" parent="Armature/Skeleton"]
+transform = Transform( -0.982438, 2.84217e-14, 0.186591, -0.186591, -2.58386e-15, -0.982438, -1.42109e-14, -1, 7.10543e-15, -0.19487, 0.0507879, 0.43236 )
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 4.42524e-37, 1.24559e-22 )
+body_offset = Transform( 1, -1.42109e-14, -4.17952e-15, 0, 1, -3.55271e-15, -4.17952e-15, 5.32907e-15, 1, -2.98023e-08, 0, 0 )
+bone_name = "ArmIK.l"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/AimPistol = SubResource( 16 )
-anims/Backwards_loop = SubResource( 17 )
-anims/Fall_loop = SubResource( 18 )
-anims/Forwards_loop = SubResource( 19 )
-anims/Idle_loop = SubResource( 20 )
-anims/Jump = SubResource( 21 )
-anims/Land = SubResource( 22 )
-anims/Rest = SubResource( 23 )
-anims/StrafeLeft_loop = SubResource( 24 )
-anims/StrafeRight_loop = SubResource( 25 )
+anims/AimPistol = SubResource( 14 )
+anims/Backwards_loop = SubResource( 15 )
+anims/Fall_loop = SubResource( 16 )
+anims/Forwards_loop = SubResource( 17 )
+anims/Idle_loop = SubResource( 18 )
+anims/Jump = SubResource( 19 )
+anims/Land = SubResource( 20 )
+anims/Rest = SubResource( 21 )
+anims/StrafeLeft_loop = SubResource( 22 )
+anims/StrafeRight_loop = SubResource( 23 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 44 )
+tree_root = SubResource( 42 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Aiming/blend_amount = 0.0
@@ -2394,7 +2403,7 @@ body_node = NodePath("..")
 [node name="BodyCollision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.01107, 0 )
 visible = false
-shape = SubResource( 45 )
+shape = SubResource( 43 )
 
 [node name="CameraRemote" type="RemoteTransform" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2994, 0 )
