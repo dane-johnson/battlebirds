@@ -4,6 +4,7 @@ signal active_weapon_changed
 signal lock_on_tgt
 
 const dirt_prefab = preload("res://Effects/DirtHit.tscn")
+const decal_prefab = preload("res://Effects/BulletDecal.tscn")
 
 const projectile_names = {
 	"rocket": preload("res://Weapons/Rocket.tscn")
@@ -116,6 +117,9 @@ remotesync func do_hit(hitscan, result):
 		dirt.rotate_x(PI) ## Turn totally around
 	else:
 		dirt.look_at(result["normal"] + result["position"], Vector3.FORWARD)
+	var decal = decal_prefab.instance()
+	get_tree().get_root().add_child(decal)
+	decal.transform = dirt.transform
 
 remotesync func fire_projectile(projectile_name, projectile_transform, projectile_tgt):
 	var projectile = projectile_names[projectile_name].instance()
