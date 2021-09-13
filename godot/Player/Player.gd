@@ -92,6 +92,9 @@ func _unhandled_input(event):
 		if event.is_action_pressed("weapon_1"): weapon_manager.rpc("set_active_weapon", 0)
 		if event.is_action_pressed("weapon_2"): weapon_manager.rpc("set_active_weapon", 1)
 		if event.is_action_pressed("weapon_3"): weapon_manager.rpc("set_active_weapon", 2)
+		if event.is_action_pressed("weapon_4"): weapon_manager.rpc("set_active_weapon", 3)
+		if event.is_action_pressed("next_weapon"): weapon_manager.rpc("next_weapon")
+		if event.is_action_pressed("previous_weapon"): weapon_manager.rpc("previous_weapon")
 		if event.is_action_pressed("reload"): active_weapon.reload()
 		if event.is_action_pressed("suicide"): die()
 	if mode == VEHICLE:

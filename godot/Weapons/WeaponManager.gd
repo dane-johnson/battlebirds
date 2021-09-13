@@ -39,6 +39,22 @@ remotesync func set_active_weapon(new_active_weapon):
 		active_weapon = new_active_weapon
 		emit_signal("active_weapon_changed", next)
 
+remotesync func next_weapon():
+	var next_num = posmod(active_weapon + 1, weapons.get_child_count())
+	var next = weapons.get_child(next_num)
+	while not (next.unlimited_ammo or next.ammo_in_reserve > 0 or next.ammo_in_clip > 0):
+		next_num = posmod(next_num + 1, weapons.get_child_count())
+		next = weapons.get_child(next_num)
+	set_active_weapon(next_num)
+
+remotesync func previous_weapon():
+	var prev_num = posmod(active_weapon - 1,  weapons.get_child_count())
+	var prev = weapons.get_child(prev_num)
+	while not (prev.unlimited_ammo or prev.ammo_in_reserve > 0 or prev.ammo_in_clip > 0):
+		prev_num = posmod(prev_num - 1, weapons.get_child_count())
+		prev = weapons.get_child(prev_num)
+	set_active_weapon(prev_num)
+
 remotesync func fire():
 	weapons.get_child(active_weapon).fire()
 

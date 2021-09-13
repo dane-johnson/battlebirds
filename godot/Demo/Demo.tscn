@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Props/Pickups/MachineGunPickup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Characters/Bird.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Props/Pickups/RocketLauncherPickup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Demo/Demo_slot0_albedo_bump.packed_tex" type="Texture" id=10]
+[ext_resource path="res://Props/Pickups/SniperPickup.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -124,3 +125,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.799, 13.1825, 0 )
 
 [node name="RocketLauncherPickup2" parent="Pickups" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.0144, 13.1825, 0 )
+
+[node name="SniperPickup" parent="Pickups" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.806, 12.935, 61.012 )
+
+[node name="SniperPickup2" parent="Pickups" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.806, 12.6069, -61.4997 )
